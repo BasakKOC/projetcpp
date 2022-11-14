@@ -27,5 +27,12 @@ class Bateau{
 	friend std::ostream& operator << (std::ostream &, const Bateau&);
 };
 
+/* rajouter 4 classes filles pour chaque type de bateau :
+	1 Porte-avions (5 cases) ;
+    1 Croiseur (4 cases) ;
+    2 Contre-torpilleurs (3 cases) ;
+    1 Torpilleur (2 cases). */ 
 
+	/* rajourter qqpart une methode nb_coule qui renvoie 
+	le nb de bateaux coules pour arreter le jeu */
 #endif
