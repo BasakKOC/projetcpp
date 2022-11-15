@@ -42,23 +42,21 @@ public:
         return grid[i][j];} */
 
     pair<char, int> gametocoord(char col, int ligne); //transforme une coordonnee lettre en int compris entre 0 et 10
-
-    void placer(Bateau bateau); //prend un bateau, coord case debut, coord case fin bateau et le place sur la grille
     
     // 0 : case eau, 1: case bateau intact, 2: case bateau touché
     // 3: coulé, 4 : inconnu (pour le joueur)
-
-    void actualiser(); //actualise une grille
 };
 
 class GrilleDepart : public Grille{
     public :
     GrilleDepart();
+    void placer(Bateau bateau); //prend un bateau, coord case debut, coord case fin bateau et le place sur la grille
 };
 
 class GrilleJeu : public Grille{
     public:
     GrilleJeu();
-};
+    void actualiser(); //actualise une grille
+};  
 
 #endif

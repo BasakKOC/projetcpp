@@ -35,6 +35,15 @@ std::ostream& operator<<(std::ostream& out, const Grille &g){ //getter et setter
     return out;
 }
 
+//methodes
+pair<char, int> Grille::gametocoord(char col, int ligne){
+        pair<int, int> res;
+        res.first=int(col)%65;
+        res.second=ligne-1;
+        return res;} 
+
+
+
 //Grille Depart
 //constructeur
 GrilleDepart::GrilleDepart() : Grille(){ //par defaut
@@ -46,7 +55,10 @@ GrilleDepart::GrilleDepart() : Grille(){ //par defaut
                 grid.push_back(ligne);}
     }
 
+
+
 //GrilleJeu
+//constructeur
 GrilleJeu::GrilleJeu() : Grille(){ //par defaut
             for (int i=0; i<10; i++) {
                 vector<int> ligne;
@@ -56,14 +68,7 @@ GrilleJeu::GrilleJeu() : Grille(){ //par defaut
                 grid.push_back(ligne);}
     }
 
-//methodes
-pair<char, int> Grille::gametocoord(char col, int ligne){
-        pair<int, int> res;
-        res.first=int(col)%65;
-        res.second=ligne-1;
-        return res;} 
-
-void Grille::placer(Bateau bateau){
+void GrilleDepart::placer(Bateau bateau){
     //recuperation coordonnees
     int startx = bateau.x_start(); //getters de la classe Bateau
     int starty = bateau.y_start();
