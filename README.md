@@ -6,7 +6,7 @@
 - Tester méthode placer de Grille
 - Creer deux classes filles : GrilleDepart, GrilleJeu
 - coder méthode actualiser() dans GrilleJeu
-- Stocker position et état bateaux
+- Stocker position et état bateaux OK
 - Coder une méthode tir
 
 
