@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cassert>
 #include <vector>
+#include "class.hpp"
 
 using std::cout;
 using std::endl;
@@ -12,6 +13,7 @@ int main(){
 	Grille g;
 	cout<<"g="<<endl<<g<<endl;
     cout<<"g="<<g.elem(1,1)<<endl;
-	g(1,1)=1;
-	cout<<"g="<<g(1,1)<<endl;
+	cout<<"g(1,1)="<<g(1,1)<<endl;
+	Bateau b(2);
+	cout<<b;
 }
