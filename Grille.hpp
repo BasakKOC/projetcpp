@@ -18,9 +18,7 @@ private:
 
 public:
     //constructeurs
-    Grille ();
-    
-    Grille(const Grille &g);
+    Grille(const Grille &g); //par copie
 
     //getter
     int elem(int i, int j) const {assert(i>=0 && i<10 && j>=0 && j<10); return grid[i][j];}
@@ -50,6 +48,19 @@ public:
     // 3: coulé, 4 : inconnu (pour le joueur)
 
     void actualiser(); //actualise une grille
+};
+
+class GrilleDepart : public Grille{
+    public :
+    GrilleDepart ();
+
+
+};
+
+class GrilleJeu : public Grille{
+    GrilleJeu ();
+
+
 };
 
 #endif

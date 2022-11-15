@@ -1,5 +1,5 @@
 #include "Grille.hpp"
-#include "class.hpp"
+#include "Bateau.hpp"
 #include <iostream>
 #include <cassert>
 #include <vector>
@@ -10,8 +10,27 @@ using std::endl;
 using std::vector;
 using std::pair;
 
+//Grille
+Grille::Grille(const Grille &g):  grid() { //par copie
+        for (int i=0; i<10; i++){
+            for(int j=0; j<10; j++){
+                grid[i][j]=g.grid[i][j];}}
+    }
+
+//operateurs
+std::ostream& operator<<(std::ostream& out, const Grille &g){ //getter et setter
+    for (int i=0; i<10; i++){
+        for (int j=0; j<10; j++){
+            out<<g.grid[i][j]<<" ";
+        }
+        out<<endl;
+    }
+    return out;
+}
+
+//Grille Depart
 //constructeur
-Grille::Grille() : grid(){ //par defaut
+GrilleDepart::GrilleDepart() : grid(){ //par defaut
             for (int i=0; i<10; i++) {
                 vector<int> ligne;
                 for (int j = 0; j <10; j++) {
@@ -20,11 +39,16 @@ Grille::Grille() : grid(){ //par defaut
                 grid.push_back(ligne);}
     }
 
-Grille::Grille(const Grille &g):  grid() { //par copie
-        for (int i=0; i<10; i++){
-            for(int j=0; j<10; j++){
-                grid[i][j]=g.grid[i][j];}}
+//GrilleJeu
+GrilleJeu::GrilleJeu() : grid(){ //par defaut
+            for (int i=0; i<10; i++) {
+                vector<int> ligne;
+                for (int j = 0; j <10; j++) {
+                    ligne.push_back(4);
+                }
+                grid.push_back(ligne);}
     }
+
 
 //methodes
 pair<char, int> Grille::gametocoord(char col, int ligne){
@@ -48,14 +72,5 @@ void Grille::placer(Bateau bateau, int startx, int starty, int endx, int endy){
     }
 }
 
-//operateurs
-std::ostream& operator<<(std::ostream& out, const Grille &g){
-    for (int i=0; i<10; i++){
-        for (int j=0; j<10; j++){
-            out<<g.grid[i][j]<<" ";
-        }
-        out<<endl;
-    }
-    return out;
-}
+
 
