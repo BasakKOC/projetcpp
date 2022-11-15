@@ -8,5 +8,4 @@
 - coder méthode actualiser() dans GrilleJeu
 - Stocker position et état bateaux OK
 - Coder une méthode tir
-
-- rajouter ia
+- rajouter IA
