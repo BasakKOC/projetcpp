@@ -10,3 +10,4 @@
 - tester les nouveau trucs de bateaux!!!!!!!!!! (pour basak)
 - Coder une méthode tir
 - rajouter IA
+- rajouter == pour grille
