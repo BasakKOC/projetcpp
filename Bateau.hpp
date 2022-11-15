@@ -9,57 +9,32 @@ class Bateau{
 	private:
 	int taille;
 	std::vector<int> vec;  //garde en memoire letat du bateau
+	int startx, starty,endx,endy;
 	
+	//mutateur
+	int& x_start() {return startx;}
+	int& y_start() {return starty;}
+	int& x_end() {return endx;}
+	int& y_end() {return endy;}
 	public:
 	//constructeur
-	Bateau(int n) : taille(n), vec(n,0) {}
+	Bateau(int n,int startx_, int starty_,int endx_,int endy_) : taille(n), vec(n,0) ,startx(startx_), starty(starty_),endx(endx_),endy(endy_){}
 	
 	//accesseurs et mutateurs
 	int size() const {return taille;}
 	int state(int i) const {assert (i<taille); return vec[i];}  // ou le faire avec loperateur [] si vous preferer
 	int& state(int i) {assert(i<taille);return vec[i];}
 	
+	int x_start() const {return startx;}
+	int y_start() const {return starty;}
+	int x_end() const {return endx;}
+	int y_end() const {return endy;}
+	
 	//autres methodes
 	bool couler() const ;
-	// ajouter une methode qui fait +1 a la case correspondante lorsque la ieme case du bateau est touché ? 
+	void toucher(int x,int y);
 	
 	//affichage temporaire
 	friend std::ostream& operator << (std::ostream &, const Bateau&);
-};
-
-
-//~ class Porte_avion : public Bateau{
-	//~ private:
-	//~ int taille = 5;
-	//~ public:
-	//~ Porte_avion();
-//~ };
-
-//~ class Croiseur : public Bateau{
-	//~ private: 
-	//~ int taille = 4;
-	//~ public:
-	//~ Croiseur();
-//~ };
-
-//~ class Contre_torpilleur : public Bateau{
-	//~ private:
-	//~ int taille = 3;
-	//~ public:
-	//~ Contre_torpilleur
-//~ };
-
-//~ class Torpilleur : public Bateau {
-	//~ private:
-	//~ int taille = 2;
-//~ };
-/* rajouter 4 classes filles pour chaque type de bateau :
-	1 Porte-avions (5 cases) ;
-    1 Croiseur (4 cases) ;
-    2 Contre-torpilleurs (3 cases) ;
-    1 Torpilleur (2 cases). */ 
-
-	/* rajourter qqpart une methode nb_coule qui renvoie 
-	le nb de bateaux coules pour arreter le jeu */
-	
+};	
 #endif
