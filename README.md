@@ -7,5 +7,6 @@
 - Tester méthode placer de Grille
 - coder méthode actualiser() dans GrilleJeu
 - Stocker position et état bateaux OK
+- tester les nouveau trucs de bateaux!!!!!!!!!! (pour basak)
 - Coder une méthode tir
 - rajouter IA
