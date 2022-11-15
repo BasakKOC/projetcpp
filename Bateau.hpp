@@ -11,14 +11,10 @@ class Bateau{
 	std::vector<int> vec;  //garde en memoire letat du bateau
 	int startx, starty,endx,endy;
 	
-	//mutateur
-	int& set_x_start() {return startx;}
-	int& set_y_start() {return starty;}
-	int& set_x_end() {return endx;}
-	int& set_y_end() {return endy;}
+
 	public:
 	//constructeur
-	Bateau(int n,int startx_, int starty_,int endx_,int endy_) : taille(n), vec(n,0) ,startx(startx_), starty(starty_),endx(endx_),endy(endy_){}
+	Bateau(int,int,int,int,int);
 	
 	//accesseurs et mutateurs
 	int size() const {return taille;}
@@ -32,7 +28,7 @@ class Bateau{
 	
 	//autres methodes
 	bool couler() const ;
-	void toucher(int x,int y);
+	bool toucher(int x,int y);
 	
 	//affichage temporaire
 	friend std::ostream& operator << (std::ostream &, const Bateau&);
