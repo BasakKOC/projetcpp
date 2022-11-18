@@ -12,10 +12,13 @@ using std::pair;
 
 //Grille
 //constructeurs
-Grille::Grille() : grid(){
-    vector<int> l(10);
-    vector<vector<int>> k(10,l);
-    grid=k;
+Grille::Grille(int n) : grid(){
+            for (int i=0; i<10; i++) {
+                vector<int> ligne;
+                for (int j = 0; j <10; j++) {
+                    ligne.push_back(n);
+                }
+                grid.push_back(ligne);}
 } //par defaut
 
 Grille::Grille(const Grille &g):  grid() { //par copie
@@ -45,28 +48,12 @@ pair<char, int> Grille::gametocoord(char col, int ligne){
 
 
 //Grille Depart
-//constructeur
-GrilleDepart::GrilleDepart() : Grille(){ //par defaut
-            for (int i=0; i<10; i++) {
-                vector<int> ligne;
-                for (int j = 0; j <10; j++) {
-                    ligne.push_back(0);
-                }
-                grid.push_back(ligne);}
-    }
+
 
 
 
 //GrilleJeu
-//constructeur
-GrilleJeu::GrilleJeu() : Grille(){ //par defaut
-            for (int i=0; i<10; i++) {
-                vector<int> ligne;
-                for (int j = 0; j <10; j++) {
-                    ligne.push_back(4);
-                }
-                grid.push_back(ligne);}
-    }
+
 
 void GrilleDepart::placer(Bateau bateau){
     //recuperation coordonnees

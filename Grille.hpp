@@ -18,7 +18,7 @@ protected:
 
 public:
     //constructeurs
-    Grille();
+    Grille(int);
     Grille(const Grille &g); //par copie
 
     //getter
@@ -49,13 +49,13 @@ public:
 
 class GrilleDepart : public Grille{
     public :
-    GrilleDepart();
+    GrilleDepart(): Grille(0){};
     void placer(Bateau bateau); //prend un bateau, coord case debut, coord case fin bateau et le place sur la grille
 };
 
 class GrilleJeu : public Grille{
     public:
-    GrilleJeu();
+    GrilleJeu(): Grille(4){};
     void actualiser(); //actualise une grille
 };  
 
