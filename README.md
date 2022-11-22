@@ -11,6 +11,7 @@
 - Faire méthode déroulement partie (master function) (Rick)
 
 #### General :
+- Dans actualiser rajouter qd ça tombe a l'eau=0
 - Regler le pb des bateaux des filles : coder methode qui copie bat de GrilleDepart dans GrilleJeu
 - Faire un operateur = pour les bat dans Grille
 - Faire une exception au moment où un bateau est coulé, faire une exception COULE, qui appelera une methode coule qui va remonter le code blabla
