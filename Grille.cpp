@@ -57,13 +57,13 @@ pair<char, int> Grille::gametocoord(char col, int ligne){
 
 void GrilleDepart::placer(Bateau bateau){
     //recuperation coordonnees
-    int startx = bateau.x_start(); //getters de la classe Bateau
-    int starty = bateau.y_start();
-    int endx = bateau.x_end();
-    int endy = bateau.y_end();
+    int startx = bateau.get_x_start(); //getters de la classe Bateau
+    int starty = bateau.get_y_start();
+    int endx = bateau.get_x_end();
+    int endy = bateau.get_y_end();
 
     //tests validite coordonnees
-    assert(startx==endx || starty==endy);
+    assert(startx==endx || starty==endy); //il faut aussi verifier si cest bien dans la grille !! (cf dans bataille_navale mais mieux vaut avoir tout les tests au mm endroit )
     int longueur;
     if(startx==endx){longueur=abs(endy-starty)+1;}
     else{int longueur=abs(startx-starty)+1;}
@@ -71,10 +71,12 @@ void GrilleDepart::placer(Bateau bateau){
 
     for (int i=startx; i<=endx; i++){
         for(int j=starty; j<=endy; j++){
-            grid[i][j]=1;
+            grid[i][j]=1; //utiliser (i,j) le setter codée juste au dessus
         }
     }
 }
 
 
+void GrilleJeu::actualiser(int x, int y) {
 
+}

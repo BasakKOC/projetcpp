@@ -11,7 +11,7 @@ using std::endl;
 
 
 
-		
+	//questions a poser : que represente x et y
 		void BatailleNaval::turn(Grille player, int x, int y){
 			// case eau
 			if(player == player2_self && player2_self(x, y) == 0){
@@ -31,7 +31,7 @@ using std::endl;
 				player2_self(x, y) = 2;
 			}	
 		}
-
+// dans prepare game je crois que la verification des coordonnees est faite dans placer bateau et bateau ?? a verifier  !!!!!!!!
 		void BatailleNaval::prepare_game(){
 			// Setting the ships of Player 1
 			int start_x, end_x, start_y, end_y;
@@ -101,7 +101,8 @@ using std::endl;
 			// Setting the ships of Player 2 (default or random)
 			...
 		}
-
+//reflechir sur les constructeurs : juste par defaut ca devrait suffir
+//celui avec les grilles : ??
 		BatailleNaval::BatailleNaval();
 
 		BatailleNaval::BatailleNaval(Grille play1_s, Grille play1_r, Grille play2_s, Grille play2_r){
@@ -120,7 +121,7 @@ using std::endl;
 				cin >> movement1_row; 
 				cout << "Player 1! Please, type the column." << endl;
 				cin >> movement1_column;
-				assert((movement1_row > -1 && movement1_row < 10) && (movement1_column > -1 && movement1_column < 10));
+				assert((movement1_row > -1 && movement1_row < 10) && (movement1_column > -1 && movement1_column < 10)); //idem ca doit surement etre verifie ailleurs a verifier
 				turn(player2_self, movement1_row, movement1_column); // turn of player 1
 
 				if(player 2 has no ships){
@@ -128,7 +129,7 @@ using std::endl;
 				}
 				
 				srand (time(NULL));
-				int movement2_row = rand() % 9;
+				int movement2_row = rand() % 9; //demander cest quoi le %9
 				int movement2_column = rand() % 9;
 				turn(player1_self, movement2_row, movement2_column); // turn of player 2
 
