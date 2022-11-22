@@ -28,6 +28,7 @@ int main(){
 	cout<<endl<<"taille b = "<<b.size();
 
 	//test placer
+
 	g.placer(b);
 	cout<<endl<<"New g = "<<endl<<g<<endl;
 	bat1 = g.get_bat();
@@ -40,4 +41,5 @@ int main(){
 	cout<<"Coord de b : ";
 	for (vector<int> couple: allcoord){
 		cout << " " << "("<<couple[0]<<", "<< couple[1]<<")";}
+
 }

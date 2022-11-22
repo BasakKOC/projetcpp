@@ -4,7 +4,18 @@
 3 : coulé, 4 : inconnu (pour le joueur)
 
 ## To do list :
-- coder méthode actualiser() dans GrilleJeu
+
+#### Pour la semaine pro :
+- On modifie les bateaux ?
+- Regarder exception
+- Faire méthode déroulement partie (master function) (Rick)
+
+#### General :
+- Faire un operateur = pour les bat dans Grille
+- Faire une exception au moment où un bateau est coulé, faire une exception COULE, qui appelera une methode coule qui va remonter le code blabla
+- Est ce qu'on veut stocker le fait que le bateau est touché (pas coulé) et où (c'est déjà fait je crois)
+- Retourner un booleen dans la fonction actualiser pr que dans batailleNavale le joueur rejoue si return == True
+- Peut-être mettre bat dans GrilleDepart si on en a pas besoin dans GrilleJeu
 - Coder une méthode tir
 - rajouter IA
 - rajouter == pour grille
@@ -17,4 +28,5 @@
 #### Bateau :
 
 ### Done :
-Tester méthode placer de Grille
+- Tester méthode placer de Grille
+- coder méthode actualiser() dans GrilleJeu
