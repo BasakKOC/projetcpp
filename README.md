@@ -4,7 +4,7 @@
 3 : coulé, 4 : inconnu (pour le joueur)
 
 ## To do list :
-- Est ce qu'on veut stocker le fait que le bateau est touché (pas coulé)
+- Est ce qu'on veut stocker le fait que le bateau est touché (pas coulé) et où (c'est déjà fait je crois)
 - Retourner un booleen dans la fonction actualiser pr que dans batailleNavale le joueur rejoue si return == True
 - Peut-être mettre bat dans GrilleDepart si on en a pas besoin dans GrilleJeu
 - Coder une méthode tir
