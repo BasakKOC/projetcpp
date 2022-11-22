@@ -5,6 +5,8 @@
 #ifndef CLASSBATAILLENAVALE_BATEAU
 #define CLASSBATAILLENAVALE_BATEAU
 
+using std::vector;
+
 class Bateau{
 	private:
 	int taille;
@@ -24,6 +26,8 @@ class Bateau{
 	int get_y_start() const {return starty;}
 	int get_x_end() const {return endx;}
 	int get_y_end() const {return endy;}
+
+	vector<vector<int>> get_allcoord() const; //retourne toutes les coords d'une bateau
 	
 	//autres methodes
 	bool couler() const ;

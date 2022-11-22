@@ -43,7 +43,7 @@ public:
         return grid[i][j];} */
 
     pair<char, int> gametocoord(char col, int ligne); //transforme une coordonnee lettre en int compris entre 0 et 10
-    
+ 
     // 0 : case eau, 1: case bateau intact, 2: case bateau touché
     // 3: coulé, 4 : inconnu (pour le joueur)
 };

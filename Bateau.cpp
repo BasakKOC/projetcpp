@@ -1,14 +1,28 @@
 #include "Bateau.hpp"
 #include <cassert>
 #include <iostream>
+#include <vector>
 
-//cobstructeur
+//constructeur
 Bateau::Bateau(int n,int startx_, int starty_,int endx_,int endy_) : 
 	vec(n,0), startx(startx_), starty(starty_), endx(endx_), endy(endy_){
 	//assert(n ...)// a faire 
 	taille=n;
 }
 
+//getter
+vector<vector<int>> Bateau::get_allcoord() const{
+	vector<vector<int>> res; //resulat
+	for (int i=startx; i<=endx; i++){
+		vector<int> couple;
+        for(int j=starty; j<=endy; j++){
+			couple.push_back(i);
+			couple.push_back(j);
+		}
+		res.push_back(couple);
+	}
+	return res;
+}
 
 bool Bateau::couler() const {
 	for (int i=0;i<taille;i++){
@@ -18,7 +32,6 @@ bool Bateau::couler() const {
 	}
 	return true;
 }
-
 
 bool Bateau::toucher(int x, int y){
 	if ( (x>=startx && x<= endx) && (y>= starty && y<= endy) ){
