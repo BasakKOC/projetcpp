@@ -12,7 +12,9 @@
 - Faire une fonction (dans grillejeu ?) qui détecte quel bateau est touché
 
 ## Liste des fonctions :
-### Grille :
+#### Grille :
+
+#### Bateau :
 
 ### Done :
 Tester méthode placer de Grille
