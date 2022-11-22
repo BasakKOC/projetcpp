@@ -9,6 +9,5 @@
 - Coder une méthode tir
 - rajouter IA
 - rajouter == pour grille
-- finir le constructeur de bateau (basak)
-- finir les constructeurs fille de grille (melissa)
-- faire un affichage plus joli pour jeu ??? 
+- faire un affichage plus joli pour jeu ??
+- Faire une fonction (dans grillejeu ?) qui détecte quel bateau est touché
