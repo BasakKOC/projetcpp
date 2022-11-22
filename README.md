@@ -4,7 +4,7 @@
 3 : coulé, 4 : inconnu (pour le joueur)
 
 ## To do list :
-- coder méthode actualiser() dans GrilleJeu
+- Peut-être mettre bat dans GrilleDepart si on en a pas besoin dans GrilleJeu
 - Coder une méthode tir
 - rajouter IA
 - rajouter == pour grille
@@ -17,4 +17,5 @@
 #### Bateau :
 
 ### Done :
-Tester méthode placer de Grille
+- Tester méthode placer de Grille
+- coder méthode actualiser() dans GrilleJeu
