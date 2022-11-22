@@ -4,6 +4,7 @@
 3 : coulé, 4 : inconnu (pour le joueur)
 
 ## To do list :
+- Retourner un booleen dans la fonction actualiser pr que dans batailleNavale le joueur rejoue si return == True
 - Peut-être mettre bat dans GrilleDepart si on en a pas besoin dans GrilleJeu
 - Coder une méthode tir
 - rajouter IA
