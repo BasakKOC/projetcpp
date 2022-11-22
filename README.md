@@ -21,6 +21,8 @@
 - rajouter == pour grille
 - faire un affichage plus joli pour jeu ??
 - Faire une fonction (dans grillejeu ?) qui détecte quel bateau est touché
+- tester les fonctions de grille jeu
+- actualiser renvoie un bool pour recommencer si le joueur a touche un bateau ?
 
 ## Liste des fonctions :
 #### Grille :
