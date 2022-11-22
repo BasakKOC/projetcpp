@@ -9,12 +9,11 @@ class Bateau{
 	private:
 	int taille;
 	std::vector<int> vec;  //garde en memoire letat du bateau
-	int startx, starty,endx,endy;
+	int startx, starty, endx, endy;
 	
-
 	public:
 	//constructeur
-	Bateau(int,int,int,int,int);
+	Bateau(int n, int startx_, int starty_,int endx_,int endy_);
 	
 	//accesseurs et mutateurs
 	int size() const {return taille;}

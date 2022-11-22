@@ -15,15 +15,15 @@ using std::pair;
 class Grille{
 protected:
     vector<vector<int>> grid;
-    vector<Bateau> bat; // vecteur contanant les bateau , remplacer par etats des bateau ou autre chose ???
+    vector<Bateau> bat; // vecteur contenant les bateaux , remplacer par etats des bateau ou autre chose ???
                         // a modifier avec placer_bateau (les positions ) actualiser (l'etat du bateau)
 public:
     //constructeurs
     Grille(int);
     Grille(const Grille &g); //par copie
 
-    //getter
-    int elem(int i, int j) const {assert(i>=0 && i<10 && j>=0 && j<10); return grid[i][j];}  //on peut effacer celui la ?
+    //getter bat
+    vector<Bateau> get_bat() const {return bat;}
 
     //operateurs
     int operator() (int i,int j) const { //getter

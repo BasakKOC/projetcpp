@@ -63,20 +63,29 @@ void GrilleDepart::placer(Bateau bateau){
     int endy = bateau.get_y_end();
 
     //tests validite coordonnees
+    //test coordonnees de grille valides
+    assert(startx>=0 && starty>=0 && endx<=9 && endy<=9);
+    //test coordonnees de bateau valides
     assert(startx==endx || starty==endy); //il faut aussi verifier si cest bien dans la grille !! (cf dans bataille_navale mais mieux vaut avoir tout les tests au mm endroit )
     int longueur;
     if(startx==endx){longueur=abs(endy-starty)+1;}
-    else{int longueur=abs(startx-starty)+1;}
+    else{longueur=abs(startx-endx)+1;}
     assert(longueur==bateau.size());
-
+    
+    //placement du bateau
     for (int i=startx; i<=endx; i++){
         for(int j=starty; j<=endy; j++){
+            assert(grid[i][j]==0); //test si y'a pas déjà de bateau
             grid[i][j]=1; //utiliser (i,j) le setter codée juste au dessus
         }
     }
+
+    //ajout du bateau à bat
+    bat.push_back(bateau);
+
 }
 
 
-void GrilleJeu::actualiser(int x, int y) {
-
+void GrilleJeu::actualiser() {
+   
 }

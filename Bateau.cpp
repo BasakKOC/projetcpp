@@ -2,10 +2,10 @@
 #include <cassert>
 #include <iostream>
 
-
+//cobstructeur
 Bateau::Bateau(int n,int startx_, int starty_,int endx_,int endy_) : 
-	vec(n,0) ,startx(startx_), starty(starty_),endx(endx_),endy(endy_){
-	assert(n ...)// a faire 
+	vec(n,0), startx(startx_), starty(starty_), endx(endx_), endy(endy_){
+	//assert(n ...)// a faire 
 	taille=n;
 }
 
