@@ -57,7 +57,10 @@ class GrilleDepart : public Grille{
 class GrilleJeu : public Grille{
     public:
     GrilleJeu(): Grille(4){};
-    void actualiser(); //actualise une grille
+    void actualiser(int, int, GrilleDepart); //actualise une grille
+    int quel_bat(int x, int y);
+    bool fin_bat():
 };  
+
 
 #endif

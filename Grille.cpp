@@ -4,7 +4,8 @@
 #include <cassert>
 #include <vector>
 #include <cstdlib>
-
+#include <string>
+using std::string;
 using std::cout;
 using std::endl;
 using std::vector;
@@ -86,6 +87,38 @@ void GrilleDepart::placer(Bateau bateau){
 }
 
 
-void GrilleJeu::actualiser() {
-   
+void GrilleJeu::actualiser(int x, int y, GrilleDepart gr) { //par du principe que les coord sont valide (dans la grille et pas deja touché (donc la case est un 4))
+    bat=gr.bat();// faire la methode
+    string sortie = "a l'eau";
+    int i=quel_bat(x,y);
+    if (bat[i].toucher(int x, int y)){
+        grid[x][y]=2;
+        sortie="touché";
+    }
+    if (bat[i].couler()){
+        vector<vector<int>> coord_bat = bat[i].get_allcoord();
+        for(int i=0; i<bat[i].size()){
+            int x = coord_bat[i][0];
+            int y = coord_bat[i][1];
+            grid[x][y]=3;
+        }
+        sortie="coulé";
+    }
+    cout<<sortie<<endl;
+}
+
+
+int GrilleJeu::quel_bat(int x,int y) {
+    for (int i=0; i<bat.size(); i++){
+        // a faire
+    }
+}
+
+
+bool GrilleJeu::fin_bat() {
+    bool fin=true;
+    for (int i=0; i<bat.size(); i++) {
+        if not(bat[i].couler()){fin = false;}
+    }
+    return fin;
 }
