@@ -8,9 +8,10 @@
 #### Pour la semaine pro :
 - On modifie les bateaux ?
 - Regarder exception
-- Faire méthode déroulement partie
+- Faire méthode déroulement partie (master function) (Rick)
 
 #### General :
+- Faire un operateur = pour les bat dans Grille
 - Faire une exception au moment où un bateau est coulé, faire une exception COULE, qui appelera une methode coule qui va remonter le code blabla
 - Est ce qu'on veut stocker le fait que le bateau est touché (pas coulé) et où (c'est déjà fait je crois)
 - Retourner un booleen dans la fonction actualiser pr que dans batailleNavale le joueur rejoue si return == True
