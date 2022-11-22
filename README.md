@@ -4,10 +4,12 @@
 3: coulé, 4 : inconnu (pour le joueur)
 
 ## To do list :
-- Tester méthode placer de Grille
 - coder méthode actualiser() dans GrilleJeu
 - Coder une méthode tir
 - rajouter IA
 - rajouter == pour grille
 - faire un affichage plus joli pour jeu ??
 - Faire une fonction (dans grillejeu ?) qui détecte quel bateau est touché
+
+### Done :
+Tester méthode placer de Grille
