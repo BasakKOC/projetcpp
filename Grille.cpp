@@ -50,8 +50,22 @@ pair<char, int> Grille::gametocoord(char col, int ligne){
 
 //Grille Depart
 
-
-
+//methodes
+int GrilleDepart::quel_bat (int x,int y) const{
+    int pos=0; //position du bateau
+    for (Bateau boat: bat){
+        vector<vector<int>> coord = boat.get_allcoord(); //recuperation des coord des bateaux
+        for (vector<int> couple: coord){
+            if(couple[0]==x){
+                if(couple[1]==y){
+                    return pos;
+                }
+            } 
+        }
+        pos+=1;
+    }
+    assert(pos>=9); //si on arrive la c qu'il y a un pb et que les coord sont dans l'eau
+}
 
 //GrilleJeu
 
@@ -86,18 +100,21 @@ void GrilleDepart::placer(Bateau bateau){
 
 }
 
-
-void GrilleJeu::actualiser(int x, int y, GrilleDepart gr) { //par du principe que les coord sont valide (dans la grille et pas deja touché (donc la case est un 4))
-    bat=gr.bat();// faire la methode
+bool GrilleJeu::actualiser(int x, int y, const GrilleDepart& gr) { //par du principe que les coord sont valide (dans la grille et pas deja touché (donc la case est un 4))
+    vector<Bateau> bats =gr.get_bat();// faire la methode
     string sortie = "a l'eau";
-    int i=quel_bat(x,y);
-    if (bat[i].toucher(int x, int y)){
+    bool touch=false;
+    int i = gr.quel_bat(x,y);
+    if (bats[i].toucher(x, y)){
+        cout<<"bonjour";
         grid[x][y]=2;
         sortie="touché";
+        touch=true;
     }
-    if (bat[i].couler()){
-        vector<vector<int>> coord_bat = bat[i].get_allcoord();
-        for(int i=0; i<bat[i].size()){
+    if (bats[i].couler()){
+        cout<<"alllooo";
+        vector<vector<int>> coord_bat = bats[i].get_allcoord();
+        for(int i=0; i<bats[i].size(); i++){
             int x = coord_bat[i][0];
             int y = coord_bat[i][1];
             grid[x][y]=3;
@@ -105,20 +122,13 @@ void GrilleJeu::actualiser(int x, int y, GrilleDepart gr) { //par du principe qu
         sortie="coulé";
     }
     cout<<sortie<<endl;
+    return touch;
 }
-
-
-int GrilleJeu::quel_bat(int x,int y) {
-    for (int i=0; i<bat.size(); i++){
-        // a faire
-    }
-}
-
 
 bool GrilleJeu::fin_bat() {
     bool fin=true;
     for (int i=0; i<bat.size(); i++) {
-        if not(bat[i].couler()){fin = false;}
+        if (not bat[i].couler()) {fin = false;}
     }
     return fin;
 }

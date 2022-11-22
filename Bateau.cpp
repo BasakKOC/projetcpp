@@ -13,6 +13,17 @@ Bateau::Bateau(int n,int startx_, int starty_,int endx_,int endy_) :
 //getter
 vector<vector<int>> Bateau::get_allcoord() const{
 	vector<vector<int>> res; //resulat
+	if(startx==endx){
+		for (int i=starty; i<=endy; i++){
+			vector<int> couple;
+			for(int j=startx; j<=endx; j++){
+				couple.push_back(j);
+				couple.push_back(i);
+			}
+			res.push_back(couple);}
+		return res;
+	}
+
 	for (int i=startx; i<=endx; i++){
 		vector<int> couple;
         for(int j=starty; j<=endy; j++){

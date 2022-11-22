@@ -42,4 +42,28 @@ int main(){
 	for (vector<int> couple: allcoord){
 		cout << " " << "("<<couple[0]<<", "<< couple[1]<<")";}
 
+	cout << endl<< "Indice bateau touché : "<< g.quel_bat(4, 5) << endl;
+
+	//test quel_bat
+	Bateau b2(3,1,1,1,3);
+	g.placer(b2);
+	cout<<endl<<"New g = "<<endl<<g<<endl;
+
+	vector<vector<int>> allcoord2 = b2.get_allcoord();
+	cout<<"Coord de b2 : ";
+	for (vector<int> couple: allcoord2){
+		cout << " " << "("<<couple[0]<<", "<< couple[1]<<")";}
+
+	cout << endl<< "Indice bateau touché (1,1) : "<< g.quel_bat(1, 1) << endl;
+	cout << endl<< "Indice bateau touché (7,5) : "<< g.quel_bat(7, 5) << endl;
+
+	// test actualiser
+	GrilleDepart g0;
+	GrilleJeu gj;
+	cout<<"gj = "<<endl<<gj<<endl;
+
+	bool n = gj.actualiser(1,1,g);
+	cout<< "gj.actualiser(1,1,g) = "<<n<<endl;
+	cout<<"nouv gj = "<< endl<<gj << endl;
+
 }

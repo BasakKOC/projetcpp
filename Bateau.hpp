@@ -35,5 +35,6 @@ class Bateau{
 	
 	//affichage temporaire
 	friend std::ostream& operator << (std::ostream &, const Bateau&);
+
 };	
 #endif
