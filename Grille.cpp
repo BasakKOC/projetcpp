@@ -5,6 +5,8 @@
 #include <vector>
 #include <cstdlib>
 #include <string>
+
+using std::pair;
 using std::string;
 using std::cout;
 using std::endl;
@@ -51,20 +53,23 @@ pair<char, int> Grille::gametocoord(char col, int ligne){
 //Grille Depart
 
 //methodes
-int GrilleDepart::quel_bat (int x,int y) const{
+pair<int,bool> GrilleDepart::quel_bat (int x,int y) const{
     int pos=0; //position du bateau
     for (Bateau boat: bat){
         vector<vector<int>> coord = boat.get_allcoord(); //recuperation des coord des bateaux
         for (vector<int> couple: coord){
             if(couple[0]==x){
                 if(couple[1]==y){
-                    return pos;
+                    pair<int,bool> p{pos,true};
+                    return p;
                 }
             } 
         }
         pos+=1;
     }
-    assert(pos>=9); //si on arrive la c qu'il y a un pb et que les coord sont dans l'eau
+    pair<int,bool> p0{pos,false};
+    return p0;
+    //assert(pos>=9); //si on arrive la c qu'il y a un pb et que les coord sont dans l'eau
 }
 
 //GrilleJeu
@@ -99,30 +104,35 @@ void GrilleDepart::placer(Bateau bateau){
     bat.push_back(bateau);
 
 }
+void GrilleJeu::recupere_bat(const GrilleDepart& gr) {
+    bat=gr.get_bat();
+}
 
 bool GrilleJeu::actualiser(int x, int y, const GrilleDepart& gr) { //par du principe que les coord sont valide (dans la grille et pas deja touché (donc la case est un 4))
-    vector<Bateau> bats =gr.get_bat();// faire la methode
     string sortie = "a l'eau";
-    bool touch=false;
-    int i = gr.quel_bat(x,y);
-    if (bats[i].toucher(x, y)){
-        cout<<"bonjour";
-        grid[x][y]=2;
-        sortie="touché";
-        touch=true;
+    pair<int, bool> p = gr.quel_bat(x,y);
+    int place=p.first;
+    bool j=p.second;
+    if (not j) {
+        grid[x][y]=0;
     }
-    if (bats[i].couler()){
-        cout<<"alllooo";
-        vector<vector<int>> coord_bat = bats[i].get_allcoord();
-        for(int i=0; i<bats[i].size(); i++){
-            int x = coord_bat[i][0];
-            int y = coord_bat[i][1];
-            grid[x][y]=3;
+    else {
+        if (bat[place].toucher(x, y)) {
+            grid[x][y] = 2;
+            sortie = "touche";
         }
-        sortie="coulé";
+        if (bat[place].couler()) {
+            vector<vector<int>> coord_bat = bat[place].get_allcoord();
+            for (int i = 0; i < bat[place].size(); i++) {
+                int x = coord_bat[i][0];
+                int y = coord_bat[i][1];
+                grid[x][y] = 3;
+            }
+            sortie = "coule";
+        }
     }
     cout<<sortie<<endl;
-    return touch;
+    return j;
 }
 
 bool GrilleJeu::fin_bat() {
@@ -131,4 +141,25 @@ bool GrilleJeu::fin_bat() {
         if (not bat[i].couler()) {fin = false;}
     }
     return fin;
+}
+
+
+void GrilleJeu::affiche() const {
+    for (int i = 0; i<grid.size();i++){
+        for (int j = 0;j<grid.size();j++){
+            if (grid[i][j]==4){
+                cout<<"?"<<" ";
+            }
+            if (grid[i][j]==2){
+                cout<<"t"<<" ";
+            }
+            if (grid[i][j]==3){
+                cout<<"X"<<" ";
+            }
+            if (grid[i][j]==0){
+                cout<<"~"<<" ";
+            }
+        }
+        cout<<endl;
+    }
 }

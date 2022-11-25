@@ -4,6 +4,7 @@
 #include <vector>
 #include <utility>
 
+using std::pair;
 using std::cout;
 using std::endl;
 using std::vector;
@@ -49,17 +50,19 @@ public:
 };
 
 class GrilleDepart : public Grille{
-public :
+    public :
     GrilleDepart(): Grille(0){};
     void placer(Bateau bateau); //prend un bateau, coord case debut, coord case fin bateau et le place sur la grille
-    int quel_bat(int x, int y) const;
+    pair<int,bool> quel_bat(int x, int y) const;
 };
 
 class GrilleJeu : public Grille{
-public:
+    public:
     GrilleJeu(): Grille(4){};
+    void recupere_bat(const GrilleDepart&);
     bool actualiser(int, int, const GrilleDepart&); //actualise une grille
     bool fin_bat();
+    void affiche() const;
 }; 
 
 #endif
