@@ -11,23 +11,35 @@
 - Faire méthode déroulement partie (master function) (Rick)
 
 #### General :
-- Dans actualiser rajouter qd ça tombe a l'eau=0
-- Regler le pb des bateaux des filles : coder methode qui copie bat de GrilleDepart dans GrilleJeu
 - Faire un operateur = pour les bat dans Grille
 - Faire une exception au moment où un bateau est coulé, faire une exception COULE, qui appelera une methode coule qui va remonter le code blabla
-- Est ce qu'on veut stocker le fait que le bateau est touché (pas coulé) et où (c'est déjà fait je crois)
-- Peut-être mettre bat dans GrilleDepart si on en a pas besoin dans GrilleJeu
 - rajouter IA
 - rajouter == pour grille
-- faire un affichage plus joli pour jeu ??
-- Faire une fonction (dans grillejeu ?) qui détecte quel bateau est touché
-- tester les fonctions de grille jeu
-- actualiser renvoie un bool pour recommencer si le joueur a touche un bateau ?
 
 ## Liste des fonctions :
 #### Grille :
+- get_bat() : t=renvoie le vecteurs contenant les bateau de la grille
+- operateur () pour acceder a la grille
+- gametocoord(char col,int ligne) : /transforme une coordonnee lettre en int compris entre 0 et 10
 
+#### GrilleDepart:
+- placer(bateau) : place un bateau sur la grille
+
+#### GrilleJeu:
+- recupere_bat(grilleDepart) : recupere le vecteur bateau et le recopie dans celui de la grille jeu
+- actualiser(int,int,grilleDepart) : met a jour la grille ainsi que le vecteur bateau, renvoie un bool true si un bateau a ete touv=che ou coule
+- fin_bat() : bool qui indique si tout les bateau ont ete coule ou pas
+- affiche() : affichage sans chiffre
+ 
 #### Bateau :
+- constructeur(taille, startx, starty,endx,endy)
+- size() : renvoie la taille
+- state(int i) : setter et getter du vecteur bateau
+- get_y_start() : les getters des positions x et y
+- get_allcoord() : coordonnees de tous les points dun bateau
+- couler() : renvoie true ou false selon si le bateau est coulé ou pas
+- toucher() : true ou false si le bateau est touché et change le vecteur bateau
+- affichage avec <<
 
 ### Done :
 - Tester méthode placer de Grille
