@@ -18,8 +18,13 @@ int main(){
 	GrilleDepart gdepart;
 	cout<<"gdepart="<<endl<<gdepart<<endl; */
 
+	//test constructeur Grille
 	GrilleDepart g;
 	cout<<endl<<"Depart g = "<<endl<<g<<endl;
+
+	//test constructeur par copie Grille
+	GrilleDepart g4(g);
+
 	vector<Bateau> bat1 = g.get_bat();
 	cout<< "bat = ";
 	for (Bateau boat: bat1){

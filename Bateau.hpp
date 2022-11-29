@@ -16,6 +16,7 @@ class Bateau{
 	public:
 	//constructeur
 	Bateau(int n, int startx_, int starty_,int endx_,int endy_);
+	Bateau(const Bateau&);
 	
 	//accesseurs et mutateurs
 	int size() const {return taille;}

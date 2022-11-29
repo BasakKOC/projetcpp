@@ -10,6 +10,14 @@ Bateau::Bateau(int n,int startx_, int starty_,int endx_,int endy_) :
 	taille=n;
 }
 
+Bateau::Bateau(const Bateau& b){
+	taille=b.taille;
+	startx=b.startx;
+	starty=b.starty;
+	endx=b.endx;
+	endy=b.endy;
+}
+
 //getter
 vector<vector<int>> Bateau::get_allcoord() const{
 	vector<vector<int>> res; //resulat
