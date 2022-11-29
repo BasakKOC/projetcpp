@@ -8,10 +8,10 @@
 using std::vector;
 
 class Bateau{
-	private:
-	int taille;
-	std::vector<int> vec;  //garde en memoire letat du bateau
-	int startx, starty, endx, endy;
+    private:
+    int taille;
+    std::vector<int> vec;  //garde en memoire letat du bateau
+    int startx, starty, endx, endy;
 	
 	public:
 	//constructeur

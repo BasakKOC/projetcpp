@@ -19,19 +19,26 @@ int main(){
 	cout<<"gdepart="<<endl<<gdepart<<endl; */
 
 	GrilleDepart g;
-	//cout<<endl<<"Depart g = "<<endl<<g<<endl;
+	cout<<endl<<"Depart g = "<<endl<<g<<endl;
 	vector<Bateau> bat1 = g.get_bat();
-	//cout<< "bat = ";
-	//for (Bateau boat: bat1){
-    //	cout << boat << ' ';}
+	cout<< "bat = ";
+	for (Bateau boat: bat1){
+		cout << boat << ' ';}
 	Bateau b(5, 3, 5, 7, 5); //(startx=3, starty=5); (endx=7, endy=5)
-	//cout<<endl<<"taille b = "<<b.size();
+	cout<<endl<<"taille b = "<<b.size()<<endl;
 
 	//test placer
 
 	g.placer(b);
-	//cout<<endl<<"New g = "<<endl<<g<<endl;
+	cout<<endl<<"New g = "<<endl<<g<<endl;
 	bat1 = g.get_bat();
+
+	//cas chevauchement bateaux
+	Bateau b3(2, 3, 5, 3, 6);
+	g.placer(b3);
+
+
+
 	//cout<< "New bat = ";
 	//for (Bateau boat: bat1){
     //	cout << boat << ' ';}
@@ -59,7 +66,7 @@ int main(){
 
 	// test actualiser
 
-	GrilleJeu gj;
+/* 	GrilleJeu gj;
 	//cout<<"gj = "<<endl<<gj<<endl;
     gj.affiche();
     gj.recupere_bat(g);
@@ -84,5 +91,5 @@ int main(){
     cout<<"les bateaux de gj pour linstant sont:"<<endl;
     for (Bateau boat: gj.get_bat()){
         cout << boat;}
-    cout<<"fin bat ? "<<gj.fin_bat()<<endl;
+    cout<<"fin bat ? "<<gj.fin_bat()<<endl; */
 }

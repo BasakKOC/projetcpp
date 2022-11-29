@@ -72,9 +72,6 @@ pair<int,bool> GrilleDepart::quel_bat (int x,int y) const{
     //assert(pos>=9); //si on arrive la c qu'il y a un pb et que les coord sont dans l'eau
 }
 
-//GrilleJeu
-
-
 void GrilleDepart::placer(Bateau bateau){
     //recuperation coordonnees
     int startx = bateau.get_x_start(); //getters de la classe Bateau
@@ -104,6 +101,9 @@ void GrilleDepart::placer(Bateau bateau){
     bat.push_back(bateau);
 
 }
+
+//GrilleJeu
+
 void GrilleJeu::recupere_bat(const GrilleDepart& gr) {
     bat=gr.get_bat();
 }
