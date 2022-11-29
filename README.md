@@ -38,7 +38,7 @@
 - get_y_start() : les getters des positions x et y
 - get_allcoord() : coordonnees de tous les points dun bateau
 - couler() : renvoie true ou false selon si le bateau est coulé ou pas
-- toucher() : true ou false si le bateau est touché et change le vecteur bateau
+- toucher() : change le vecteur bateau
 - affichage avec <<
 
 ### Done :
