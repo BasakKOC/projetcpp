@@ -1,4 +1,4 @@
-PROGS: test_bateau testgrille test_bataille
+PROGS: test_bateau testgrille test_bataille test_IA
 
 all: $(PROGS)
 
@@ -11,8 +11,14 @@ testgrille: testgrille.o Bateau.o Grille.o
 test_bataille: test_bataille.o Bateau.o Grille.o BatailleNavale.o
 	g++ -o $@ $^ 
 
+test_IA: test_IA.o Bateau.o Grille.o IA.o
+	g++ -o $@ $^ 
+
 test_bataille.o: test_bataille.cpp Bateau.hpp Grille.hpp BatailleNavale.hpp
 	g++ -c $<
+
+IA.o: BatailleNavale.cpp Bateau.hpp Grille.hpp IA.hpp
+	g++ -c 	IA.cpp
 
 BatailleNavale.o: BatailleNavale.cpp Bateau.hpp Grille.hpp BatailleNavale.hpp
 	g++ -c BatailleNavale.cpp

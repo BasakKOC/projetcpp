@@ -7,12 +7,14 @@
 
 class IA{
 public:
-
     //ajouter constructeur
 
-    Bateau placer_bateau(int); // il reste a faire la fonction placer avec ce bateau
-    //GrilleDepart preparer_IA();
-    //void tirer();
+    Bateau coord_bateau(int); // il reste a faire la fonction placer avec ce bateau
+    GrilleDepart preparer_IA();
+
+//    pair<int,int> level_random();
+//    pair<int,int> level_normal();
+//    pair<int,int> level_God();
 };
 
 #endif //BATAILLENAVALE_CPP_IA_HPP
