@@ -48,7 +48,7 @@ void BatailleNavale::turn_2(int x, int y){ // nothing happens for: water (0), al
 }
 
 
-void BatailleNavale::prepare_game(){ // IDEA: CREATE AUX METHOD FOR CHECKING CONDITIONS 
+void BatailleNavale::prepare_game(){ // 2 - IDEA: CREATE AUX METHOD FOR CHECKING CONDITIONS 
     int start_x, end_x, start_y, end_y;
     int sizes [7] = {5, 4, 3, 3, 3, 2, 2};
     string ships [7] = {"porte-avion", "croiseur", "first contre-torpilleur", "second contre-torpilleur", 
@@ -69,8 +69,14 @@ void BatailleNavale::prepare_game(){ // IDEA: CREATE AUX METHOD FOR CHECKING CON
             if(start_x == end_x){longueur = abs(end_y - start_y) +1;}
             else{longueur = abs(start_x - end_x) +1;}
             bool cond3 = longueur == sizes[i];
+            bool cond4;
+            for (int i=start_x; i<=end_x; i++){
+                for(int j=start_y; j<=end_y; j++){ 
+                    cond4 = player1_self(i, j) == 0;
+                }
+            }
             
-            if(cond1 == true && cond2 == true && cond3 == true){
+            if(cond1 == true && cond2 == true && cond3 == true && cond4 == true){
                 break;
             }
         }
@@ -79,6 +85,10 @@ void BatailleNavale::prepare_game(){ // IDEA: CREATE AUX METHOD FOR CHECKING CON
         cout << player1_self;
     }
 
+
+    // 1 - TEST this
+    player2_self = player1_self;
+/*
     // Setting the ships of AI (random) -- NOT WORKING
     for (int i = 0; i < sizeof(sizes) / sizeof(int); i++) {
         while(true){
@@ -102,7 +112,7 @@ void BatailleNavale::prepare_game(){ // IDEA: CREATE AUX METHOD FOR CHECKING CON
         Bateau b2(sizes[i], start_x, start_y, end_x, end_y);
         player2_self.placer(b2);
         cout << player2_self;
-    }
+    }*/
 }
 
 
