@@ -1,3 +1,5 @@
+#include "Grille.hpp"
+#include "Bateau.hpp"
 #include <iostream>
 #include <cassert>
 #include <vector>

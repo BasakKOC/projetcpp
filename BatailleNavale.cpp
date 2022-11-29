@@ -48,15 +48,14 @@ void BatailleNavale::turn_2(int x, int y){ // nothing happens for: water (0), al
 }
 
 
-void BatailleNavale::prepare_game(){
+void BatailleNavale::prepare_game(){ // IDEA: CREATE AUX METHOD FOR CHECKING CONDITIONS 
     int start_x, end_x, start_y, end_y;
     int sizes [7] = {5, 4, 3, 3, 3, 2, 2};
     string ships [7] = {"porte-avion", "croiseur", "first contre-torpilleur", "second contre-torpilleur", 
                         "third contre-torpilleur", "first torpilleur", "second torpilleur"};
 
-    // Setting the ships of Player 1
-    for (int i = 0; i < sizeof(sizes) / sizeof(int); i++) {
-        
+    // Setting the ships of Player 1 
+    for (int i = 0; i < sizeof(sizes) / sizeof(int); i++) {   
         while(true){
             cout << "Player 1! Please, type the " << ships[i] << " coordinates (size " << sizes[i] << ")." << endl;
             cout << "Respect this order: start_x, start_y, end_x, end_y." << endl;
@@ -64,29 +63,49 @@ void BatailleNavale::prepare_game(){
             cin >> start_y; 
             cin >> end_x; 
             cin >> end_y;
-            bool cond = (start_x > -1 && start_x < 10) && (end_x > -1 && end_x < 10) && (start_y > -1 && start_y < 10) && (end_y > -1 && end_y < 10);
-            if(cond == true){
+            bool cond1 = (start_x > -1 && start_x < 10) && (end_x > -1 && end_x < 10) && (start_y > -1 && start_y < 10) && (end_y > -1 && end_y < 10);
+            bool cond2 = start_x == end_x || start_y == end_y;
+            int longueur;
+            if(start_x == end_x){longueur = abs(end_y - start_y) +1;}
+            else{longueur = abs(start_x - end_x) +1;}
+            bool cond3 = longueur == sizes[i];
+            
+            if(cond1 == true && cond2 == true && cond3 == true){
                 break;
             }
         }
         Bateau b1(sizes[i], start_x, start_y, end_x, end_y);
         player1_self.placer(b1);
-        cout <<  player1_self;
+        cout << player1_self;
     }
 
-    // Setting the ships of AI (random)
+    // Setting the ships of AI (random) -- NOT WORKING
     for (int i = 0; i < sizeof(sizes) / sizeof(int); i++) {
-        srand (time(NULL));
-        start_x = rand() % 9;
-        start_y = rand() % 9;
-        end_x = rand() % 9;
-        end_y = rand() % 9;
+        while(true){
+            srand (time(NULL));
+            start_x = rand() % 9;
+            start_y = rand() % 9;
+            end_x = rand() % 9;
+            end_y = rand() % 9;
+
+            bool cond1 = (start_x > -1 && start_x < 10) && (end_x > -1 && end_x < 10) && (start_y > -1 && start_y < 10) && (end_y > -1 && end_y < 10);
+            bool cond2 = start_x == end_x || start_y == end_y;
+            int longueur;
+            if(start_x == end_x){longueur = abs(end_y - start_y) +1;}
+            else{longueur = abs(start_x - end_x) +1;}
+            bool cond3 = longueur == sizes[i];
+            
+            if(cond1 == true && cond2 == true && cond3 == true){
+                break;
+            }
+        }
         Bateau b2(sizes[i], start_x, start_y, end_x, end_y);
         player2_self.placer(b2);
+        cout << player2_self;
     }
 }
 
-	
+
 Grille BatailleNavale::jouer(){
     prepare_game();
 
