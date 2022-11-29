@@ -5,10 +5,10 @@
 
 ## To do list :
 
-#### Pour la semaine pro :
-- On modifie les bateaux ?
-- Regarder exception
-- Faire méthode déroulement partie (master function) (Rick)
+#### Semaine 27 novembre 2022 :
+- Finir BatailleNavale : jeu qui marche
+- Faire l'exception
+- Faire l'IA
 
 #### General :
 - Faire un operateur = pour les bat dans Grille
