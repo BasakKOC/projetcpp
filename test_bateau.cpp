@@ -17,9 +17,9 @@ int main(){
 	//~ b.state(1)+=1;
 	//~ b.state(2)+=1;
 	//~ cout << b.couler()<<std::endl;
-	cout<<b.toucher(1,1)<<std::endl;
+	//cout<<b.toucher(1,1)<<std::endl;
 	
-	cout<<b<<std::endl;
+	//cout<<b<<std::endl;
 	
 	return 0;
 }

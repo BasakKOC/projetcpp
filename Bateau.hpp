@@ -31,7 +31,7 @@ class Bateau{
 	
 	//autres methodes
 	bool couler() const ;
-	bool toucher(int x,int y);
+	void toucher(int x,int y);
 	
 	//affichage temporaire
 	friend std::ostream& operator << (std::ostream &, const Bateau&);

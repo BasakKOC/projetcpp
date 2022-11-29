@@ -44,7 +44,7 @@ bool Bateau::couler() const {
 	return true;
 }
 
-bool Bateau::toucher(int x, int y){
+void Bateau::toucher(int x, int y){
 	if ( (x>=startx && x<= endx) && (y>= starty && y<= endy) ){
 		if (startx==endx){
 			state(y-starty)+=1;
@@ -52,9 +52,7 @@ bool Bateau::toucher(int x, int y){
 		if (starty==endy){
 			state(x-startx)+=1;
 		}
-		return true;
 	}
-	return false;
 }
 
 std::ostream& operator<< (std::ostream& o, const Bateau& b){

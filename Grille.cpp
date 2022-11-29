@@ -117,8 +117,9 @@ bool GrilleJeu::actualiser(int x, int y, const GrilleDepart& gr) { //par du prin
         grid[x][y]=0;
     }
     else {
-        if (bat[place].toucher(x, y)) {
+        if (j) {
             grid[x][y] = 2;
+            bat[place].toucher(x,y);
             sortie = "touche";
         }
         if (bat[place].couler()) {
