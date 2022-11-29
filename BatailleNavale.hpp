@@ -3,12 +3,14 @@
 #include <vector>
 #include <cstdlib>
 
+using std::cin;
 using std::cout;
 using std::endl;
 
 class BatailleNavale{
     private:
-        Grille player1_self, player1_rival, player2_self, player2_rival;
+        GrilleDepart player1_self, player2_self;
+        GrilleJeu player1_rival, player2_rival;
 
         void turn_1(int x, int y);
 
@@ -16,8 +18,8 @@ class BatailleNavale{
 
         void prepare_game();
     public:
-        BatailleNaval();
+        BatailleNavale();
 
         Grille jouer();
 		
-}
+};

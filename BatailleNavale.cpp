@@ -8,6 +8,7 @@
 #include <string>
 
 using std::string;
+using std::cin;
 using std::cout;
 using std::endl;
 
@@ -55,24 +56,33 @@ void BatailleNavale::prepare_game(){
 
     // Setting the ships of Player 1
     for (int i = 0; i < sizeof(sizes) / sizeof(int); i++) {
-        cout << "Player 1! Please, type the " << ships[i] << " coordinates (size " << sizes[i] << ")." << endl;
-        cout << "Respect this order: start_x, end_x, start_y, end_y." << endl;
-        cin >> start_x; 
-        cin >> end_x; 
-        cin >> start_y; 
-        cin >> end_y;
-        assert((start_x > -1 && start_x < 10) && (end_x > -1 && end_x < 10) && (start_y > -1 && start_y < 10) && (end_y > -1 && end_y < 10));
-        player1_self.placer(new Bateau (sizes[i], start_x, start_y, end_x, end_y), start_x, start_y, end_x, end_y);
+        
+        while(true){
+            cout << "Player 1! Please, type the " << ships[i] << " coordinates (size " << sizes[i] << ")." << endl;
+            cout << "Respect this order: start_x, start_y, end_x, end_y." << endl;
+            cin >> start_x;
+            cin >> start_y; 
+            cin >> end_x; 
+            cin >> end_y;
+            bool cond = (start_x > -1 && start_x < 10) && (end_x > -1 && end_x < 10) && (start_y > -1 && start_y < 10) && (end_y > -1 && end_y < 10);
+            if(cond == true){
+                break;
+            }
+        }
+        Bateau b1(sizes[i], start_x, start_y, end_x, end_y);
+        player1_self.placer(b1);
+        cout <<  player1_self;
     }
 
     // Setting the ships of AI (random)
     for (int i = 0; i < sizeof(sizes) / sizeof(int); i++) {
         srand (time(NULL));
         start_x = rand() % 9;
-        end_x = rand() % 9;
         start_y = rand() % 9;
+        end_x = rand() % 9;
         end_y = rand() % 9;
-        player2_self.placer(new Bateau (sizes[i], start_x, start_y, end_x, end_y), start_x, start_y, end_x, end_y);
+        Bateau b2(sizes[i], start_x, start_y, end_x, end_y);
+        player2_self.placer(b2);
     }
 }
 
@@ -114,8 +124,3 @@ Grille BatailleNavale::jouer(){
     }
 }
 
-
-
-// NOTES
-// each player object has grid[i][j]. ex: player1_self(i, j)
-// test file: create un object BatailleNaval and call jouer()
