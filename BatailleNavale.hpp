@@ -9,7 +9,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-class BatailleNavale{
+class BatailleNavale{ 
     private:
         GrilleDepart player1_self, player2_self;
         GrilleJeu player1_rival, player2_rival;

@@ -26,6 +26,9 @@ public:
     //getter bat
     vector<Bateau> get_bat() const {return bat;}
 
+    /* //setter bat
+    vector<Bateau>& set_bat(int i) {return bat[i];} */
+
     //operateurs
     int operator() (int i,int j) const { //getter
         assert(i>=0 && i<10 && j>=0 && j<10);

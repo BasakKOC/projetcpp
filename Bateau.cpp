@@ -16,6 +16,9 @@ Bateau::Bateau(const Bateau& b){
 	starty=b.starty;
 	endx=b.endx;
 	endy=b.endy;
+	for(int i=0 ; i<taille ; i++){
+		vec.push_back(b.vec[i]);
+	}
 }
 
 //getter

@@ -15,7 +15,7 @@ using std::pair;
 
 //Grille
 //constructeurs
-Grille::Grille(int n) : grid(){
+Grille::Grille(int n) : grid(), bat(){
             for (int i=0; i<10; i++) {
                 vector<int> ligne;
                 for (int j = 0; j <10; j++) {
@@ -24,10 +24,15 @@ Grille::Grille(int n) : grid(){
                 grid.push_back(ligne);}
 } //par defaut
 
-Grille::Grille(const Grille &g):  grid() { //par copie
+Grille::Grille(const Grille &g):  grid(){ //par copie
+        //copie de la grille
         for (int i=0; i<10; i++){
             for(int j=0; j<10; j++){
                 grid[i][j]=g.grid[i][j];}}
+        //copie de bat
+        for (Bateau boat: g.bat){
+            bat.push_back(boat);
+        }
     }
 
 //operateurs
