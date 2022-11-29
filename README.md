@@ -11,6 +11,7 @@
 - Faire l'IA
 
 #### General :
+- Dans placer, empêcher de placer start et end a l'envers
 - Faire un operateur = pour les bat dans Grille
 - Faire une exception au moment où un bateau est coulé, faire une exception COULE, qui appelera une methode coule qui va remonter le code blabla
 - rajouter IA
