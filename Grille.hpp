@@ -21,7 +21,7 @@ protected:
 public:
     //constructeurs
     Grille(int);
-    Grille(const Grille &g); //par copie
+    //Grille(const Grille &g); //par copie
 
     //getter bat
     vector<Bateau> get_bat() const {return bat;}

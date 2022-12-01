@@ -15,7 +15,7 @@ using std::pair;
 
 //Grille
 //constructeurs
-Grille::Grille(int n) : grid(), bat(){
+Grille::Grille(int n) : grid(),bat() {
             for (int i=0; i<10; i++) {
                 vector<int> ligne;
                 for (int j = 0; j <10; j++) {
@@ -24,16 +24,16 @@ Grille::Grille(int n) : grid(), bat(){
                 grid.push_back(ligne);}
 } //par defaut
 
-Grille::Grille(const Grille &g):  grid(){ //par copie
-        //copie de la grille
-        for (int i=0; i<10; i++){
-            for(int j=0; j<10; j++){
-                grid[i][j]=g.grid[i][j];}}
-        //copie de bat
-        for (Bateau boat: g.bat){
-            bat.push_back(boat);
-        }
-    }
+//Grille::Grille(const Grille &g):grid(),bat(){ //par copie
+//        //copie de la grille
+//        for (int i=0; i<10; i++){
+//            for(int j=0; j<10; j++){
+//                grid[i][j]=g.grid[i][j];}}
+//        //copie de bat
+//        for (int i=0; i< (g.bat).size();i++){
+//            bat.push_back(g.bat[i]);
+//        }
+//}
 
 //operateurs
 std::ostream& operator<<(std::ostream& out, const Grille &g){ //getter et setter
@@ -88,7 +88,7 @@ void GrilleDepart::placer(Bateau bateau){
     //test coordonnees de grille valides
     assert(startx>=0 && starty>=0 && endx<=9 && endy<=9);
     //test coordonnees de bateau valides
-    assert(startx==endx || starty==endy); //il faut aussi verifier si cest bien dans la grille !! (cf dans bataille_navale mais mieux vaut avoir tout les tests au mm endroit )
+    assert(startx==endx || starty==endy);
     int longueur;
     if(startx==endx){longueur=abs(endy-starty)+1;}
     else{longueur=abs(startx-endx)+1;}
@@ -122,17 +122,15 @@ bool GrilleJeu::actualiser(int x, int y, const GrilleDepart& gr) { //par du prin
         grid[x][y]=0;
     }
     else {
-        if (j) {
-            grid[x][y] = 2;
-            bat[place].toucher(x,y);
-            sortie = "touche";
-        }
+        grid[x][y] = 2;
+        bat[place].toucher(x,y);
+        sortie = "touche";
         if (bat[place].couler()) {
             vector<vector<int>> coord_bat = bat[place].get_allcoord();
             for (int i = 0; i < bat[place].size(); i++) {
-                int x = coord_bat[i][0];
-                int y = coord_bat[i][1];
-                grid[x][y] = 3;
+                int x_ = coord_bat[i][0];
+                int y_= coord_bat[i][1];
+                grid[x_][y_] = 3;
             }
             sortie = "coule";
         }

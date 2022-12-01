@@ -10,7 +10,7 @@ public:
     //ajouter constructeur
 
     Bateau coord_bateau(int); // il reste a faire la fonction placer avec ce bateau
-    GrilleDepart preparer_IA();
+    GrilleDepart preparer_IA(); // ok mais pas tres smart
 
 //    pair<int,int> level_random();
 //    pair<int,int> level_normal();

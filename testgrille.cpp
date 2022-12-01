@@ -124,10 +124,7 @@ int main(){
 
 	GrilleDepart g0;
 	cout<<"g0="<<endl<<g0<<endl;
-	for(Bateau boat: g0.get_bat()){
-		cout<<"bat ="<<endl;
-		cout<<boat<<endl;
-	}
+
 	Bateau b2(3,1,1,1,3);
 	g0.placer(b2);
 	for(Bateau boat: g0.get_bat()){
@@ -136,8 +133,9 @@ int main(){
 	}
 
 	GrilleDepart g0copy(g0);
-	/* for(Bateau boat: g0copy.get_bat()){
+    cout<<"g0copy = "<<endl<<g0copy<<endl;
+	for(Bateau boat: g0copy.get_bat()){
 		cout<<"batg0copy ="<<endl;
 		cout<<boat<<endl;
-	} */
+	}
 }
