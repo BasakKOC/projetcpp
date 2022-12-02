@@ -53,4 +53,36 @@ GrilleDepart IA::preparer_IA() {
     return g;
 }
 
+pair<int, int> IA::level_random(const GrilleJeu& g) {
+    srand (time(NULL));
+    int x,y;
+    while (true) {
+        x = rand()%10;
+        y = rand()%10;
+        if (g(x,y)==4){
+            break;
+        }
+    }
+    pair<int,int> p(x,y);
+    cout<<"x = "<<x<<" ;y = "<<y<<endl;
+    return p;
+}
+
+pair<int, int> IA::level_normal(const GrilleJeu & g) {
+    srand (time(NULL));
+    int x,y;
+    //cas il y a un bateau toucher non couler:
+    for (Bateau boat : )
+
+
+
+    //cas il n y a pas de bateau touche pour linstant ou il sont couler
+    // utiliser level_random
+
+
+    pair<int,int> p(x,y);
+    cout<<"x = "<<x<<" ;y = "<<y<<endl;
+    return p;
+}
+
 //void IA::tirer() {}

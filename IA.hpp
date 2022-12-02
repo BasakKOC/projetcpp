@@ -9,11 +9,11 @@ class IA{
 public:
     //ajouter constructeur
 
-    Bateau coord_bateau(int); // il reste a faire la fonction placer avec ce bateau
-    GrilleDepart preparer_IA(); // ok mais pas tres smart
+    Bateau coord_bateau(int);  // trouve un bateau placer
+    GrilleDepart preparer_IA(); //renvoie une grille depart avec tous les bateau placer
 
-//    pair<int,int> level_random();
-//    pair<int,int> level_normal();
+    pair<int,int> level_random(const GrilleJeu&);
+    pair<int,int> level_normal(const GrilleJeu&);
 //    pair<int,int> level_God();
 };
 
