@@ -25,7 +25,7 @@ BatailleNavale::BatailleNavale(){
 void BatailleNavale::turn_1(int x, int y){
     switch(player2_self(x, y)){
         case 0: // water
-                cout << "Oh, no! Nothing there. Good luck the next time." << endl;
+                cout << "A l'eau !" << endl;
                 break;
         case 1: // untouched
             player1_rival.actualiser(x, y, player2_self);

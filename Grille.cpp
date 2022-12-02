@@ -72,7 +72,7 @@ pair<int,bool> GrilleDepart::quel_bat (int x,int y) const{
         }
         pos+=1;
     }
-    pair<int,bool> p0{pos,false};
+    pair<int,bool> p0{-1,false};
     return p0;
     //assert(pos>=9); //si on arrive la c qu'il y a un pb et que les coord sont dans l'eau
 }
@@ -113,7 +113,8 @@ void GrilleJeu::recupere_bat(const GrilleDepart& gr) {
     bat=gr.get_bat();
 }
 
-bool GrilleJeu::actualiser(int x, int y, const GrilleDepart& gr) { //par du principe que les coord sont valide (dans la grille et pas deja touché (donc la case est un 4))
+bool GrilleJeu::actualiser(int x, int y, const GrilleDepart& gr) { //par du principe que les coord sont valides 
+//(dans la grille et pas deja touché (donc la case est un 4) : Tester dans bataille Navale)
     string sortie = "a l'eau";
     pair<int, bool> p = gr.quel_bat(x,y);
     int place=p.first;
@@ -166,4 +167,5 @@ void GrilleJeu::affiche() const {
         }
         cout<<endl;
     }
+    cout<<endl;
 }

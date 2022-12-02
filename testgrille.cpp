@@ -9,133 +9,134 @@ using std::endl;
 using std::vector;
 
 int main(){
-	/* Grille g;
-	cout<<"g="<<endl<<g<<endl;
 
-	GrilleJeu gjeu;
-	cout<<"gjeu="<<endl<<gjeu<<endl;
-	
-	GrilleDepart gdepart;
-	cout<<"gdepart="<<endl<<gdepart<<endl; */
+	//Tests constructeurs et << pour les grilles
+	Grille g(5);
+	cout<<endl<<"Depart g = "<<endl<<g<<endl;
 
-	//test constructeur Grille
-	//GrilleDepart g;
-	//cout<<endl<<"Depart g = "<<endl<<g<<endl;
+	GrilleDepart gd;
+	cout<<endl<<"Depart gd = "<<endl<<gd<<endl;
 
-	
+	GrilleJeu gj;
+	cout<<"gj="<<endl<<gj<<endl;
 
-	//vector<Bateau> bat1 = g.get_bat();
-	/* cout<< "bat = ";
-	for (Bateau boat: bat1){
-		cout << boat << ' ';}
- */
-	//test constructeur Bateau
-	//Bateau b(5, 3, 5, 7, 5); //(startx=3, starty=5); (endx=7, endy=5)
-	//cout<<endl<<"taille b = "<<b.size()<<endl;
+	//Test getter et << de l'attribut bat
+	vector<Bateau> batgd = gd.get_bat();
+	cout << endl << "batgd = " << endl;
+	for (Bateau boat: batgd){
+    	cout << boat << ' ';}
 
-	//test constructeur bateau par copie
-	//Bateau bcpy(b);
-	//cout<<endl<<"taille bcpy = "<<bcpy.size()<<endl;
-	//test get_allcoord
-	/* vector<vector<int>> allcoordbcpy = bcpy.get_allcoord();
-	cout<<"Coord de bcpy : ";
-	for (vector<int> couple: allcoordbcpy){
-		cout << " " << "("<<couple[0]<<", "<< couple[1]<<")";}
+	//Test constructeur, size et << Bateau
+	//bateau vertical
+	Bateau b0(5, 3, 5, 7, 5); //(startx=3, starty=5); (endx=7, endy=5)
+	cout<<endl<<"taille b0 = "<<b0.size()<<endl;
+	cout<<endl<<"b0 = "<<b0<<endl;
+	//bateau horizontal
+	Bateau b1(3,1,1,1,3); 
 
-	cout <<endl<<b<<endl;
-	cout <<endl<<bcpy <<endl; */
-	
-
-	//test placer
-	//g.placer(b);
-	//cout<<endl<<"New g = "<<endl<<g<<endl;
-	//bat1 = g.get_bat();
-
-	//test constructeur par copie Grille
-	//GrilleDepart g4(g);
-
+	//Test methode placer 
+	gd.placer(b0);
+	cout<<endl<<"gd + b0 = "<<endl<<gd<<endl;
+	gd.placer(b1);
+	cout<<endl<<"gd + b0 + b1 = "<<endl<<gd<<endl;
 	//cas chevauchement bateaux
-	//Bateau b3(2, 3, 5, 3, 6);
-	//g.placer(b3);
+	Bateau b2(2, 3, 5, 3, 6); 
+	//gd.placer(b2); // on a bien un assertion fail
+	
 
+	// Getter et << de l'attribut bat
+	batgd = gd.get_bat();
+	cout<<"batgd = "<<endl;
+	for (Bateau boat: batgd){
+    	cout << boat << ' ';}
 
+	// Test constructeur par copie Grille
+	GrilleDepart gd_cpy(gd);
+	cout<<endl<<"gd_cpy = "<<endl<<gd_cpy<<endl;
 
+	vector<Bateau> batgd_cpy = gd_cpy.get_bat();
+	cout<<"batgd_cpy = "<<endl;
+	for (Bateau boat: batgd_cpy){
+    	cout << boat << ' ';}
 
-	//cout<< "New bat = ";
-	//for (Bateau boat: bat1){
-    //	cout << boat << ' ';}
+	// Test constructeur par copie Bateau
+	Bateau b0_cpy(b0);
+	cout<<endl<<"b0_cpy = "<<b0_cpy<<endl;
 
-	//test get_allcoord
-	//vector<vector<int>> allcoord = b.get_allcoord();
-	//cout<<"Coord de b : ";
-	//for (vector<int> couple: allcoord){
-	//	cout << " " << "("<<couple[0]<<", "<< couple[1]<<")";}
+	// Test getter coordonnees Bateau get_allcoord
+	vector<vector<int>> allcoord_b0 = b0.get_allcoord();
+	cout<<"Coord de b0 : ";
+	for (vector<int> couple: allcoord_b0){
+		cout << " " << "("<<couple[0]<<", "<< couple[1]<<")";}
+	cout<<endl;
 
-	//cout << endl<< "Indice bateau touche : "<< g.quel_bat(4, 5).first << endl;
+	// Test quel_bat de GrilleDepart
+	cout << endl<< "(1,1) Case bateau ? : "<< gd.quel_bat(7, 5).second << endl;
+	cout << endl<< "Indice bateau touche (1,1) : "<< gd.quel_bat(1, 1).first << endl;
+	cout << endl<< "(0,0) Case bateau ? : "<< gd.quel_bat(0, 0).second << endl;
+	cout << endl<< "Indice bateau touche (0,0) : "<< gd.quel_bat(0, 0).first << endl;
+	
 
-	//test quel_bat
-	//Bateau b2(3,1,1,1,3);
-	//g.placer(b2);
-	//cout<<endl<<"New g = "<<endl<<g<<endl;
+	// Test affichage GrilleJeu
+	cout<<endl<<"Affichage grille joueur :"<<endl;
+	gj.affiche();
 
-	//vector<vector<int>> allcoord2 = b2.get_allcoord();
-	//cout<<"Coord de b2 : ";
-	//for (vector<int> couple: allcoord2){
-	//	cout << " " << "("<<couple[0]<<", "<< couple[1]<<")";}
+	// Test recupere_bat (copie bat de GrilleDepart dans GrilleJeu)
+	gj.recupere_bat(gd);
+	vector<Bateau> batgj = gj.get_bat();
+	cout<<endl<<"batgj = "<<endl;
+	for (Bateau boat: batgj){
+    	cout << boat << ' ';}
+	cout<<endl;
 
-	//cout << endl<< "Indice bateau touche (1,1) : "<< g.quel_bat(1, 1).first << endl;
-	//cout << endl<< "Indice bateau touche (7,5) : "<< g.quel_bat(7, 5).first << endl;
+	// Test actualiser
+	bool a=gj.actualiser(0,0,gd);
+	cout<< "gj.actualiser(0,0,g) = "<<a;
+	cout<<endl<<"Grille joueur :"<<endl;
+	gj.affiche();
 
-	// test actualiser
+    bool z=gj.actualiser(1,1,gd);
+	cout<<"gj.actualiser(1,1,g) = "<<z<<endl;
+	cout<<"Grille joueur :"<<endl;
+	gj.affiche();
 
-/* 	GrilleJeu gj;
-	//cout<<"gj = "<<endl<<gj<<endl;
-    gj.affiche();
-    gj.recupere_bat(g);
-    vector<Bateau> batj=gj.get_bat();
-//    cout<<"les bateaux de gj pour linstant sont:"<<endl;
-//    for (Bateau boat: batj){
-//        cout << boat;}
-	auto a=gj.actualiser(0,0,g);
-    auto z=gj.actualiser(1,1,g);
-    auto e=gj.actualiser(1,2,g);
-    auto y=gj.actualiser(1,3,g);
-    auto t=gj.actualiser(7,5,g);
-    auto r=gj.actualiser(6,5,g);
-    auto u=gj.actualiser(4,5,g);
-    auto o=gj.actualiser(5,5,g);
-    auto p=gj.actualiser(3,5,g);
-    //bool n1=gj.actualiser(0,0,g);
-	cout<< "gj.actualiser(1,1,g) = "<<z<<endl;
-    //cout<< "gj.actualiser(0,0,g) = "<<n<<endl;
-    cout<<" new gj = "<<endl<<gj<<endl;
-    gj.affiche();
-    cout<<"les bateaux de gj pour linstant sont:"<<endl;
+    bool e=gj.actualiser(1,2,gd);
+	cout<<"Grille joueur :"<<endl;
+	gj.affiche();
+
+    bool y=gj.actualiser(1,3,gd);
+	cout<<"Grille joueur :"<<endl;
+	gj.affiche();
+
+    bool t=gj.actualiser(7,5,gd);
+	cout<<"Grille joueur :"<<endl;
+	gj.affiche();
+
+    bool r=gj.actualiser(6,5,gd);
+	cout<<"Grille joueur :"<<endl;
+	gj.affiche();
+
+	//Test fin_bat
+	cout<<"Les bateaux de gj pour l'instant sont :"<<endl;
     for (Bateau boat: gj.get_bat()){
         cout << boat;}
-    cout<<"fin bat ? "<<gj.fin_bat()<<endl; */
+    cout<<endl<<"Fin bat ? : "<<gj.fin_bat()<<endl;
 
-	//vector<Bateau> vb;
-	//vb.push_back(b);
-	//vb.push_back(b3);
-	/* for(Bateau boat: vb){
-		cout<<"batjojhgfdsq:"<<boat<<endl;
-	} */
+    bool u=gj.actualiser(4,5,gd);
+	cout<<endl<<"Grille joueur :"<<endl;
+	gj.affiche();
 
-	GrilleDepart g0;
-	cout<<"g0="<<endl<<g0<<endl;
+    bool o=gj.actualiser(5,5,gd);
+	cout<<"Grille joueur :"<<endl;
+	gj.affiche();
 
-	Bateau b2(3,1,1,1,3);
-	g0.placer(b2);
-	for(Bateau boat: g0.get_bat()){
-		cout<<"batg0 ="<<endl;
-		cout<<boat<<endl;
-	}
+    bool p=gj.actualiser(3,5,gd);
+    cout<<"Grille joueur :"<<endl;
+	gj.affiche();
 
-	GrilleDepart g0copy(g0);
-    cout<<"g0copy = "<<endl<<g0copy<<endl;
-	for(Bateau boat: g0copy.get_bat()){
-		cout<<"batg0copy ="<<endl;
-		cout<<boat<<endl;
-	}
+    cout<<"Les bateaux de gj pour l'instant sont :"<<endl;
+    for (Bateau boat: gj.get_bat()){
+        cout << boat;}
+    cout<<endl<<"Fin bat ? : "<<gj.fin_bat()<<endl;
+	
 }
