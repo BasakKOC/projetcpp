@@ -11,7 +11,17 @@ using std::vector;
 
 int main(){
     BatailleNavale bataille;
-    bataille.jouer();
+    int i,j;
+    bataille.prepare_game();
+    for(int j=0; j<=100;j++){
+        cout<<"ligne ?"<<endl;
+        cin>>i;
+        cout<<"colonne ?"<<endl;
+        cin>>j;
+        bataille.turn_1(i,j);
+    }
+    
+    //bataille.jouer();
 
     return 0;
 }

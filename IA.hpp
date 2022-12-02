@@ -13,7 +13,7 @@ public:
     GrilleDepart preparer_IA(); //renvoie une grille depart avec tous les bateau placer
 
     pair<int,int> level_random(const GrilleJeu&);
-    pair<int,int> level_normal(const GrilleJeu&);
+    //pair<int,int> level_normal(const GrilleJeu&);
 //    pair<int,int> level_God();
 };
 

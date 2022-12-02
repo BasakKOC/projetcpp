@@ -68,7 +68,7 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
     return p;
 }
 
-pair<int, int> IA::level_normal(const GrilleJeu & g) {
+/* pair<int, int> IA::level_normal(const GrilleJeu & g) {
     srand (time(NULL));
     int x,y;
     //cas il y a un bateau toucher non couler:
@@ -83,6 +83,6 @@ pair<int, int> IA::level_normal(const GrilleJeu & g) {
     pair<int,int> p(x,y);
     cout<<"x = "<<x<<" ;y = "<<y<<endl;
     return p;
-}
+} */
 
 //void IA::tirer() {}

@@ -1,6 +1,7 @@
 #include "Grille.hpp"
 #include "Bateau.hpp"
 #include "BatailleNavale.hpp"
+#include "IA.hpp"
 #include <iostream>
 #include <cassert>
 #include <vector>
@@ -13,6 +14,7 @@ using std::cout;
 using std::endl;
 
 
+//constructeur
 BatailleNavale::BatailleNavale(){
     player1_self = GrilleDepart();      // Grille of player 
     player1_rival = GrilleJeu();        // Grille of AI from player's perspective
@@ -26,25 +28,22 @@ void BatailleNavale::turn_1(int x, int y){
     switch(player2_self(x, y)){
         case 0: // water
                 cout << "A l'eau !" << endl;
+                player1_rival.actualiser(x, y, player2_self);
                 break;
-        case 1: // untouched
-            player1_rival.actualiser(x, y, player2_self);
-            // *update1 for player2_self and player1_rival: touch the ship (2)*
-            // *update2 for player2_self and player1_rival: if necessary, sink the ship (3)*
+        case 1: // nouvelle case bateau
+                cout << "Touche !" << endl;
+                player1_rival.actualiser(x, y, player2_self);
                 break;
         default: // already touched (2) or sank (3)
-            cout << "Cmon! Do not repeat movements." << endl;
+            cout << "Case deja touchee !" << endl;
     }
+    player1_rival.affiche();
 }
 
 
 // Turn of AI
 void BatailleNavale::turn_2(int x, int y){ // nothing happens for: water (0), already touched (2) or sank (3) - note: AI should not repeat movements
-    if(player1_self(x, y) == 1) { // untouched
-            player2_rival.actualiser(x, y, player1_self);
-            // *update1 for player1_self and player2_rival: touch the ship (2)*
-            // *update2 for player1_self and player2_rival: if necessary, sink the ship (3)*
-    }
+    player2_rival.actualiser(x, y, player1_self);
 }
 
 
@@ -83,11 +82,19 @@ void BatailleNavale::prepare_game(){ // 2 - IDEA: CREATE AUX METHOD FOR CHECKING
         Bateau b1(sizes[i], start_x, start_y, end_x, end_y);
         player1_self.placer(b1);
         cout << player1_self;
+        player2_rival.recupere_bat(player1_self);
     }
 
-
+    // Setting the ships of IA
+    IA ia;
+    cout<<"Veuillez patientez, le joueur 2 place ses bateaux ..."<<endl;
+    player2_self = ia.preparer_IA();
+    player1_rival.recupere_bat(player2_self);
+    cout<<"grille IA :"<<endl<<player2_self<<endl;
+    
     // 1 - TEST this
-    player2_self = player1_self;
+    //player2_self = player1_self;
+    
 /*
     // Setting the ships of AI (random) -- NOT WORKING
     for (int i = 0; i < sizeof(sizes) / sizeof(int); i++) {
@@ -122,7 +129,7 @@ Grille BatailleNavale::jouer(){
     while(true){
          // Turn of player 1
         cout << "TURN OF PLAYER 1" << endl;
-        cout << player1_rival << endl;
+        //cout << player1_rival << endl;
         int movement1_row, movement1_column;
         cout << "Player 1! Please, type the row." << endl;
         cin >> movement1_row; 

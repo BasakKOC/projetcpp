@@ -115,17 +115,21 @@ void GrilleJeu::recupere_bat(const GrilleDepart& gr) {
 
 bool GrilleJeu::actualiser(int x, int y, const GrilleDepart& gr) { //par du principe que les coord sont valides 
 //(dans la grille et pas deja touché (donc la case est un 4) : Tester dans bataille Navale)
-    string sortie = "a l'eau";
     pair<int, bool> p = gr.quel_bat(x,y);
     int place=p.first;
     bool j=p.second;
+    cout<<"p.first="<<place<<endl;
+    cout<<"p.second="<<j<<endl;
     if (not j) {
         grid[x][y]=0;
     }
     else {
         grid[x][y] = 2;
+        //cout<<"bat[place]="<<bat[place]<<endl;
+        /* for (Bateau  boat : bat){
+            cout <<boat;
+        } */
         bat[place].toucher(x,y);
-        sortie = "touche";
         if (bat[place].couler()) {
             vector<vector<int>> coord_bat = bat[place].get_allcoord();
             for (int i = 0; i < bat[place].size(); i++) {
@@ -133,10 +137,9 @@ bool GrilleJeu::actualiser(int x, int y, const GrilleDepart& gr) { //par du prin
                 int y_= coord_bat[i][1];
                 grid[x_][y_] = 3;
             }
-            sortie = "coule";
+            cout<<endl<<"Coule !"<<endl;
         }
     }
-    cout<<sortie<<endl;
     return j;
 }
 

@@ -13,15 +13,15 @@ class BatailleNavale{
     private:
         GrilleDepart player1_self, player2_self;
         GrilleJeu player1_rival, player2_rival;
-
+        
+    public:
         void turn_1(int x, int y);
 
         void turn_2(int x, int y);
 
         void prepare_game();
-    public:
+
         BatailleNavale();
 
-        Grille jouer();
-		
+        Grille jouer();	
 };
