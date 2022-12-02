@@ -54,15 +54,21 @@ public:
 
 class GrilleDepart : public Grille{
     public :
+    //constructeur
     GrilleDepart(): Grille(0){};
+
+    //methodes
     void placer(Bateau bateau); //prend un bateau, coord case debut, coord case fin bateau et le place sur la grille
     pair<int,bool> quel_bat(int x, int y) const;
 };
 
 class GrilleJeu : public Grille{
     public:
+    //constructeur
     GrilleJeu(): Grille(4){};
     void recupere_bat(const GrilleDepart&);
+
+    //methodes
     bool actualiser(int, int, const GrilleDepart&); //actualise une grille
     bool fin_bat();
     void affiche() const;
