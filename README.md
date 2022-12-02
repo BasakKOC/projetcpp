@@ -8,14 +8,10 @@
 #### Semaine 27 novembre 2022 :
 - Finir BatailleNavale : jeu qui marche
 - Faire l'exception
-- Faire l'IA
 
 #### General :
 - Dans placer, empêcher de placer start et end a l'envers
-- Faire un operateur = pour les bat dans Grille
 - Faire une exception au moment où un bateau est coulé, faire une exception COULE, qui appelera une methode coule qui va remonter le code blabla
-- rajouter IA
-- rajouter == pour grille
 
 ## Liste des fonctions :
 #### Grille :
@@ -28,7 +24,7 @@
 
 #### GrilleJeu:
 - recupere_bat(grilleDepart) : recupere le vecteur bateau et le recopie dans celui de la grille jeu
-- actualiser(int,int,grilleDepart) : met a jour la grille ainsi que le vecteur bateau, renvoie un bool true si un bateau a ete touv=che ou coule
+- actualiser(int,int,grilleDepart) : met a jour la grille ainsi que le vecteur bateau, renvoie un bool true si un bateau a ete touv=che ou coule (/!\ il faut utiliser recupere_bat avant d'appeler actualiser une 1ere fois !)
 - fin_bat() : bool qui indique si tout les bateau ont ete coule ou pas
 - affiche() : affichage sans chiffre
  
@@ -42,6 +38,11 @@
 - toucher() : change le vecteur bateau
 - affichage avec <<
 
-### Done :
-- Tester méthode placer de Grille
-- coder méthode actualiser() dans GrilleJeu
+#### IA :
+- coord_bateau(int size) : choisist aléatoirement les coord d'un bateau de taille size
+- preparer_IA() : grille depar de l'IA
+- level_random(GrilleJeu) : choisit des coord aléatoirement que l'IA peut jouer aleatoirement
+
+#### BatailleNavale :
+- prepare_game() : initlaise les grilles du joueur 1 et de l'IA
+- turn_1(x, y) : actualise la grille jeu player1_rival (avec bateaux de l'IA)
