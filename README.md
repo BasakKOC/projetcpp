@@ -8,9 +8,9 @@
 #### Semaine 27 novembre 2022 :
 - Finir BatailleNavale : jeu qui marche
 - Faire l'exception
+- Dans placer, empêcher de placer start et end a l'envers (et aussi dans les test_coord)
 
 #### General :
-- Dans placer, empêcher de placer start et end a l'envers
 - Faire une exception au moment où un bateau est coulé, faire une exception COULE, qui appelera une methode coule qui va remonter le code blabla
 
 ## Liste des fonctions :
