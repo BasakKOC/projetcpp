@@ -2,7 +2,7 @@
 #include "Bateau.hpp"
 #include<iostream>
 #include "IA.hpp"
-
+#include <vector>
 using namespace std;
 
 Bateau IA::coord_bateau(int size) {
@@ -68,21 +68,45 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
     return p;
 }
 
-/* pair<int, int> IA::level_normal(const GrilleJeu & g) {
+pair<int, int> IA::level_normal(const GrilleJeu & g) {
     srand (time(NULL));
     int x,y;
-    //cas il y a un bateau toucher non couler:
-    for (Bateau boat : )
+    //cas bateau touche : au moins deux1 daffile et bateau en question non coule
 
+
+    //cas il y a un bateau touche : 1 isole
+    vector<pair<int,int>> fonction(appeler la fonction qui fera ca!);
+    if (il y a un bateau avec un 1 isole){ //un bool + plus la position du 1
+        //cas ou le point est un coin
+
+        //cas ou cest sur le bord
+
+        //cas ou cest pas un bord
+    }
 
 
     //cas il n y a pas de bateau touche pour linstant ou il sont couler
-    // utiliser level_random
+    //mettre dans une boucle if
+    return level_random(g);
 
 
     pair<int,int> p(x,y);
     cout<<"x = "<<x<<" ;y = "<<y<<endl;
     return p;
-} */
+}
 
-//void IA::tirer() {}
+vector<pair<int, int>> IA::ou_sont_les_uns(const GrilleDepart & g) {
+    vector<Bateau> bat(g.get_bat());
+    for(Bateau boat : bat){
+        vector<vector<int>> coord=boat.get_allcoord();
+        for (int i = 0 ; i<boat.size();i++){
+            if (boat.state(i)==1){
+                //verifie a droite et a gauche
+                //si y a que des zeros on fait un push_back et on renvoie!
+                //sinon on mets de cote et on continue de chercher
+                //verifier que cest pas un bateau coule aussi !
+            }
+        }
+    }
+
+}
