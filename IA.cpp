@@ -64,7 +64,7 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
         }
     }
     pair<int,int> p(x,y);
-    cout<<"x = "<<x<<" ;y = "<<y<<endl;
+    cout<<"x = "<<x<<"; y = "<<y<<endl;
     return p;
 }
 

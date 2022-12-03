@@ -8,9 +8,9 @@
 #### Semaine 27 novembre 2022 :
 - Finir BatailleNavale : jeu qui marche
 - Faire l'exception
+- Dans placer, empêcher de placer start et end a l'envers (et aussi dans les test_coord)
 
 #### General :
-- Dans placer, empêcher de placer start et end a l'envers
 - Faire une exception au moment où un bateau est coulé, faire une exception COULE, qui appelera une methode coule qui va remonter le code blabla
 
 ## Liste des fonctions :
@@ -45,4 +45,6 @@
 
 #### BatailleNavale :
 - prepare_game() : initlaise les grilles du joueur 1 et de l'IA
-- turn_1(x, y) : actualise la grille jeu player1_rival (avec bateaux de l'IA)
+- test_coord_prepare(GrilleDepart, 4 int, taillebateau) : teste validités coordonnées pour prepare_game du joueur 1.
+- test_coord_tir(GrilleJeu, int, int) : test validité coordonnées de tir entrées par la joueur 1 (teste si c'est dans la grille et si il l'a pas déjà touchée)
+- turn(x, y, GrilleDepart self, GrilleJeu rival) : actualise la grille jeu rivale
