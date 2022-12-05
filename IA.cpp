@@ -68,67 +68,84 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
     return p;
 }
 
-//pair<int, int> IA::level_normal(const GrilleJeu & g) {
-//    srand (time(NULL));
-//    int x,y;
-//    //cas bateau touche : au moins deux1 daffile et bateau en question non coule
-//
-//
-//    //cas il y a un bateau touche : 1 isole
-//    vector<pair<int,int>> fonction(appeler la fonction qui fera ca!);
-//    if (il y a un bateau avec un 1 isole){ //un bool + plus la position du 1
-//        //cas ou le point est un coin
-//
-//        //cas ou cest sur le bord
-//
-//        //cas ou cest pas un bord
-//    }
-//
-//
-//    //cas il n y a pas de bateau touche pour linstant ou il sont couler
-//    //mettre dans une boucle if
-//    return level_random(g);
-//
-//
-//    pair<int,int> p(x,y);
-//    cout<<"x = "<<x<<" ;y = "<<y<<endl;
-//    return p;
-//}
+pair<int, int> IA::level_normal(const GrilleJeu & g) {
+    int x,y;
+    vector<pair<int,int>> vec(ou_sont_les_uns(g));
+    if (vec.empty()){
+        return level_random(g);
+    }
+    if (vec.size()==1) {
+        int i = vec[0].first;
+        int j = vec[0].second;
+        for (int t = 0; t < 4 < t++) {
+            if ((i + 1) >= 0 && (i + 1) < 10) {
+                if(g(i+1,j)==4){
+                    pair<int,int> p(i+1,j);
+                    return p;
+                }
+
+            }
+            if ((i - 1) >= 0 && (i - 1) < 10) {
+                if(g(i-1,j)==4){
+                    pair<int,int> p(i-1,j);
+                    return p;
+                }
+
+            }
+            if ((j + 1) >= 0 && (j + 1) < 10) {
+                if(g(i,j+1)==4){
+                    pair<int,int> p(i,j+1);
+                    return p;
+                }
+
+            }
+            if ((j - 1) >= 0 && (j - 1) < 10) {
+                if(g(i,j-1)==4){
+                    pair<int,int> p(i,j-1);
+                    return p;
+                }
+
+            }
+        }
+    }
+    cout<<"x = "<<x<<" ;y = "<<y<<endl;
+    pair<int,int> p(x,y);
+    return p;
+}
 
 vector<pair<int, int>> IA::ou_sont_les_uns(const GrilleJeu & g) { //il y a toujours au moins un bateau pas coule
     vector<Bateau> bat(g.get_bat());
     vector<pair<int, int>> vec;        //on mettra ici les coord si y il y a plusieurs uns daffiler
     vector<pair<int, int>> vec_isole;  //on met le premier un 'isole' si vec est vide cest lui quon renvoie
     for(Bateau boat : bat){            //on va verifier chaque bateau de la grille jeu
-        if (!boat.couler()) {// si le bateau est couer ca sert a rien de le considerer
-            cout<<"le bateau est coule"<<endl;
+        if (boat.couler()) {           // si le bateau est couler ca sert a rien de le considerer
             continue;
         }
         vector<vector<int>> coord=boat.get_allcoord();
         for (int i = 0 ; i<boat.size();i++){
-            cout<<"le bateau "<<boat<<" n'est pas coule"<<endl;
             if (boat.state(i)==1){
-                cout<<"la coord "<<i<<" egal 1"<<endl;
-                if (boat.state(i+1)==0 && vec_isole.empty()){
-                    pair<int,int> p(coord[i][0],coord[i][1]);
-                    vec_isole.push_back(p);
-                    cout<<"size vec isole = "<<vec_isole.size()<<endl;
-                }
-                else{
-                    pair<int,int> p(coord[i][0],coord[i][1]);
-                    vec.push_back(p);
-                    int j= i;
-                    while (boat.state(j)==1 && j<boat.size() ){  //rajouter un -1 ?
-                        pair<int,int> p(coord[j][0],coord[j][1]);
-                        vec.push_back(p);
-                    }
-                    return vec;
-                }
-
                 if (i==boat.size()-1){  // cest le dernier point de boat, si on est arrivee jusque la cest que y avait pas dautre un avant, cest un 1 'isole' on le met dans vec_isole
                     if (vec_isole.empty()){
                         pair<int,int> p(coord[i][0],coord[i][1]);
                         vec_isole.push_back(p);
+                    }
+                }
+                else {
+                    if (boat.state(i + 1) == 0 && vec_isole.empty()) {
+                        pair<int, int> p(coord[i][0], coord[i][1]);
+                        vec_isole.push_back(p);
+                    } else {
+//                    pair<int,int> p(coord[i][0],coord[i][1]);
+//                    vec.push_back(p);
+                        int j = i;
+                        while (j < boat.size()) {//rajouter un -1 ?
+                            if (boat.state(j) == 1) {
+                                pair<int, int> p(coord[j][0], coord[j][1]);
+                                vec.push_back(p);
+                            }
+                            j += 1;
+                        }
+                        return vec;
                     }
                 }
             }

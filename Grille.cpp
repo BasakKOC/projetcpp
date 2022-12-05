@@ -118,8 +118,6 @@ bool GrilleJeu::actualiser(int x, int y, const GrilleDepart& gr) { //par du prin
     pair<int, bool> p = gr.quel_bat(x,y);
     int place=p.first;
     bool j=p.second;
-    cout<<"p.first="<<place<<endl;
-    cout<<"p.second="<<j<<endl;
     if (not j) {
         grid[x][y]=0;
     }

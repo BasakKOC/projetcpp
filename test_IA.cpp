@@ -46,10 +46,21 @@ int main(){
     cin>>x;
     cin>>y;
     gj.actualiser(x,y,g);
+
+    cin>>x;
+    cin>>y;
+    gj.actualiser(x,y,g);
+
+    cin>>x;
+    cin>>y;
+    gj.actualiser(x,y,g);
+
     vector<pair<int,int>> v=ia.ou_sont_les_uns(gj);
     for (pair<int,int> p :v){
         cout<<"p.first = "<<p.first<<" ; p.second = "<<p.second<<endl;
     }
+
+
 }
 
 
