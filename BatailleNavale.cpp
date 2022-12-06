@@ -116,9 +116,9 @@ void BatailleNavale::turn(int x, int y, const GrilleDepart &playeri_self, Grille
 
 void BatailleNavale::jouer(){
     prepare_game();
-    /* IA ia;
+    IA ia;
     
-    player2_self = ia.preparer_IA();
+    /* player2_self = ia.preparer_IA();
     cout<<"player2_self ="<<endl<<player2_self<<endl;
     player1_rival.recupere_bat(player2_self);
     cout<<"player1_rival ="<<endl<<player1_rival<<endl;
@@ -136,7 +136,7 @@ void BatailleNavale::jouer(){
             cin >> tir1_row; 
             cout << "Joueur 1 ! Entrez la colonne." << endl;
             cin >> tir1_column;
-            if test_coord_tir (player1_rival, tir1_row, tir1_column){
+            if (test_coord_tir(player1_rival, tir1_row, tir1_column)) {
                 turn(tir1_row, tir1_column, player2_self, player1_rival); 
                 cout << player1_rival << endl;
                 break;
@@ -145,22 +145,20 @@ void BatailleNavale::jouer(){
 
         //condition d'arret joueur 1
         if(player2_rival.fin_bat()){ 
-            cout << "YOU WIN!" << endl;
+            cout << "JOUEUR 1 : WINNER!" << endl;
             break;
         }
 		
         // Turn of AI
         cout << "~~~ TOUR DU JOUEUR 2 ~~~" << endl;
         cout << player2_rival << endl;
-        
-        pair<int, int> tir2 = level_random(player2_rival);
+        pair<int, int> tir2 = ia.level_random(player2_rival);
         turn(tir2.first, tir2.second, player1_self, player2_rival); 
-        
         cout << player2_rival << endl;
 		
         //condition d'arret joueur 2
         if (player1_rival.fin_bat()){ 
-            cout << "YOU LOSE!" << endl;
+            cout << "GAME OVER" << endl;
             break; 
         }
     }
