@@ -1,4 +1,12 @@
 # Projet CPP : Bataille Navale
+ _           _   _   _           _     _  <br />     
+| |         | | | | | |         | |   (_)    <br />  
+| |__   __ _| |_| |_| | ___  ___| |__  _ _ __  <br />
+| '_ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \ <br />
+| |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) |<br />
+|_.__/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/ <br />
+                                        | |   <br /> 
+                                        |_|   <br /> 
 ### Affichage grille :
 0 : case eau, 1 : case bateau intact, 2 : case bateau touché <br />
 3 : coulé, 4 : inconnu (pour le joueur)
