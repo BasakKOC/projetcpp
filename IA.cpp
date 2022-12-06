@@ -3,6 +3,7 @@
 #include<iostream>
 #include "IA.hpp"
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 Bateau IA::coord_bateau(int size) {
@@ -77,7 +78,7 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
     if (vec.size()==1) {
         int i = vec[0].first;
         int j = vec[0].second;
-        for (int t = 0; t < 4 < t++) {
+        for (int t = 0; t < 4 ; t++) {
             if ((i + 1) >= 0 && (i + 1) < 10) {
                 if(g(i+1,j)==4){
                     pair<int,int> p(i+1,j);
@@ -105,6 +106,38 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
                     return p;
                 }
 
+            }
+        }
+    }
+    else{
+        if (vec[0].first==vec[1].second){  //cas ou le bateau est en ligne
+            int i = vec[0].first;
+            int j = vec[0].second+vec.size();
+            if (j >= 0 && j < 10) {
+                if(g(i,j-1)==4){
+                    pair<int,int> p(i,j);
+                    return p;
+                }
+            }
+            else {
+                pair<int,int> p(i,vec[0].second-1);
+                return p;
+            }
+        }
+        else{  //cas ou le bateau est en colonne
+//            pair<int,int> p(???,vec[0].second);
+//            return p;
+            int i = vec[0].first+vec.size();
+            int j = vec[0].second;
+            if (i >= 0 && i< 10) {
+                if(g(i,j-1)==4){
+                    pair<int,int> p(i,j);
+                    return p;
+                }
+            }
+            else {
+                pair<int,int> p(vec[0].first-1,j);
+                return p;
             }
         }
     }
@@ -145,6 +178,7 @@ vector<pair<int, int>> IA::ou_sont_les_uns(const GrilleJeu & g) { //il y a toujo
                             }
                             j += 1;
                         }
+                        sort(vec.begin(),vec.end());
                         return vec;
                     }
                 }

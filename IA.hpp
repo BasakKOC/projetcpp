@@ -12,7 +12,7 @@ private:
     Bateau coord_bateau(int);  // trouve un bateau placer
 public:
     //fonction utile pour la suite
-    vector<pair<int,int>> ou_sont_les_uns(const GrilleJeu&) ;  //mettre en static ???????
+    vector<pair<int,int>> ou_sont_les_uns(const GrilleJeu&) ;
 
     //preparer la grilleDepart
     GrilleDepart preparer_IA(); //renvoie une grille depart avec tous les bateau placer
