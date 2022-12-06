@@ -43,6 +43,7 @@ std::ostream& operator<<(std::ostream& out, const Grille &g){ //getter et setter
         }
         out<<endl;
     }
+    out<<endl;
     return out;
 }
 
@@ -151,7 +152,9 @@ bool GrilleJeu::fin_bat() {
 
 
 void GrilleJeu::affiche() const {
+    cout<<"  0 1 2 3 4 5 6 7 8 9"<<endl;
     for (int i = 0; i<grid.size();i++){
+        cout<<i<<" ";
         for (int j = 0;j<grid.size();j++){
             if (grid[i][j]==4){
                 cout<<"?"<<" ";
@@ -168,5 +171,5 @@ void GrilleJeu::affiche() const {
         }
         cout<<endl;
     }
-    cout<<endl;
+    cout<<endl <<endl;
 }

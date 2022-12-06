@@ -68,7 +68,7 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
     return p;
 }
 
-pair<int, int> IA::level_normal(const GrilleJeu & g) {
+/* pair<int, int> IA::level_normal(const GrilleJeu & g) {
     int x,y;
     vector<pair<int,int>> vec(ou_sont_les_uns(g));
     if (vec.empty()){
@@ -111,7 +111,7 @@ pair<int, int> IA::level_normal(const GrilleJeu & g) {
     cout<<"x = "<<x<<" ;y = "<<y<<endl;
     pair<int,int> p(x,y);
     return p;
-}
+} */
 
 vector<pair<int, int>> IA::ou_sont_les_uns(const GrilleJeu & g) { //il y a toujours au moins un bateau pas coule
     vector<Bateau> bat(g.get_bat());

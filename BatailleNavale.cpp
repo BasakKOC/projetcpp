@@ -34,6 +34,7 @@ bool BatailleNavale::test_coord_tir (const GrilleJeu& player_rival, int x, int y
     if (condgrid){
         conduntouched = (player_rival(x, y) == 4);
     }
+
     return condgrid && conduntouched;
 }
 
@@ -64,17 +65,18 @@ bool BatailleNavale::test_coord_prepare(const GrilleDepart &player_self, int sta
 }
 
 
-void BatailleNavale::prepare_game(){ // 2 - IDEA: CREATE AUX METHOD FOR CHECKING CONDITIONS 
+void BatailleNavale::prepare_game(){
     int start_x, end_x, start_y, end_y;
     int sizes [7] = {5, 4, 3, 3, 3, 2, 2};
-    string ships [7] = {"porte-avion", "croiseur", "first contre-torpilleur", "second contre-torpilleur", 
-                        "third contre-torpilleur", "first torpilleur", "second torpilleur"};
+    string ships [7] = {"porte-avion", "croiseur", "premier contre-torpilleur", "deuxieme contre-torpilleur", 
+                        "troisieme contre-torpilleur", "premier torpilleur", "deuxieme torpilleur"};
 
-    // Setting the ships of Player 1 
+    // Placement bateaux Joueur 1
+    player2_rival.affiche();
     for (int i = 0; i < sizeof(sizes) / sizeof(int); i++) {   
         while(true){
-            cout << "Player 1! Please, type the " << ships[i] << " coordinates (size " << sizes[i] << ")." << endl;
-            cout << "Respect this order: start_x, start_y, end_x, end_y." << endl;
+            cout << "Entrez les 4 coordonnees du " << ships[i] << " (de taille " << sizes[i] << ")." << endl;
+            cout << "Respectez cet ordre : ligne 1ere case, colonne 1ere case, ligne derniere case, colonne derniere case." << endl;
             cin >> start_x;
             cin >> start_y; 
             cin >> end_x;
@@ -83,83 +85,108 @@ void BatailleNavale::prepare_game(){ // 2 - IDEA: CREATE AUX METHOD FOR CHECKING
                 break;}
         }
         Bateau b(sizes[i], start_x, start_y, end_x, end_y);
+        cout<<endl<<"Bateau place avec succes !"<<endl;
         player1_self.placer(b);
         cout << player1_self;
         player2_rival.recupere_bat(player1_self);
     }
 
-    // Setting the ships of IA
+    // Placement bateaux IA
     IA ia;
-    cout<<"Veuillez patientez, le joueur 2 place ses bateaux ..."<<endl;
+    cout<<"Veuillez patientez, je place mes bateaux ..."<<endl<<endl;
     player2_self = ia.preparer_IA();
     player1_rival.recupere_bat(player2_self);
-    cout<<"grille IA :"<<endl<<player2_self<<endl;
-
+    //cout<<"grille IA :"<<endl<<player2_self<<endl;
+    cout<<"C'est bon j'ai fini ! Merci d'avoir patiente !"<<endl<<endl;
 }
 
-// Turn of player 1
-void BatailleNavale::turn(int x, int y, const GrilleDepart &playeri_self, GrilleJeu &playerj_rival){
-    switch(playeri_self(x, y)){
-        case 0: // water
-                cout << "A l'eau !" << endl;
-                playerj_rival.actualiser(x, y, playeri_self);
-                break;
-        case 1: // nouvelle case bateau
-                cout << "Touche !" << endl;
-                playerj_rival.actualiser(x, y, playeri_self);
-                break;
-        default: // already touched (2) or sank (3)
-            cout << "Case deja touchee !" << endl;
+
+bool BatailleNavale::turn(int x, int y, const GrilleDepart &playeri_self, GrilleJeu &playerj_rival){
+    //assert(test_coord_tir(playerj_rival, x, y));
+    bool rejouer = playerj_rival.actualiser(x, y, playeri_self);
+        if (rejouer){
+            cout << endl << "Touche ! Rejouez." << endl << endl;
         }
+        else{
+            cout<< endl <<"A l'eau !"<<endl<<endl;
+        }
+    playerj_rival.affiche();
+
+    return rejouer;
 }
 
 
 void BatailleNavale::jouer(){
-    prepare_game();
     IA ia;
-    
-    /* player2_self = ia.preparer_IA();
-    cout<<"player2_self ="<<endl<<player2_self<<endl;
-    player1_rival.recupere_bat(player2_self);
-    cout<<"player1_rival ="<<endl<<player1_rival<<endl;
-    pair<int, int> p = ia.level_random(player1_rival);
-    turn(p.first, p.second,player2_self,player1_rival);
-    cout<<"player1_rival ="<<endl<<player1_rival<<endl; */
+    string nom="";
+    int tours = 0;
 
-    while(true){
+    // Affichage
+    cout<<endl<<endl<<"Bienvenue sur BATAILLENAVALE"<<endl<<endl;
+    cout<< "o o..          "<<endl;
+    cout<<"    o o.o        "<<endl;
+    cout<<"     ...oo       "<<endl;
+    cout<<"      __||__     "<<endl;
+    cout<<"   __|_o_o_o\\__  "<<endl;
+    cout<<"   \\''''''''''/  "<<endl;
+    cout<<"    \\ ______ /   "<<endl;
+    cout<<"~~~~~~~~~~~~~~~~~"<<endl<<endl<<endl;
 
-         // Tour du 1er joueur
-        cout << "~~~ TOUR DU JOUEUR 1 ~~~" << endl;
+
+    cout<<"Entrez votre nom de joueur."<<endl;
+    cin>>nom;
+    cout<<endl<<endl<<"Bonjour, "<< nom <<" !"<<endl<<endl<< "Je suis l'IA, heureuse de jouer avec vous !"<<endl<<endl<< "Allez, la partie commence !"<<endl<<endl;
+
+    prepare_game();
+
+    while(true){ //boucle du jeu
+
+        // Tour du 1er joueur
+        cout << endl << "A votre tour " << nom << " !"<< endl <<endl;
+        cout << "~~~ TOUR DE "<< nom << " ~~~" << endl;
         int tir1_row, tir1_column;
-        while(true){
-            cout << "Joueur 1 ! Entrez la ligne." << endl;
-            cin >> tir1_row; 
-            cout << "Joueur 1 ! Entrez la colonne." << endl;
-            cin >> tir1_column;
-            if (test_coord_tir(player1_rival, tir1_row, tir1_column)) {
-                turn(tir1_row, tir1_column, player2_self, player1_rival); 
-                cout << player1_rival << endl;
-                break;
+
+        while(true){ // boucle du tour joueur 1
+            bool rejouer_1 = false; //indique si on rejoue ou non
+            while(true){ // boucle d'entree des coordonnees
+                cout << nom << " ! Entrez une ligne." << endl;
+                cin >> tir1_row; 
+                cout << nom << " ! Entrez une colonne." << endl;
+                cin >> tir1_column;
+                if (test_coord_tir(player1_rival, tir1_row, tir1_column)) { 
+                    rejouer_1 = turn(tir1_row, tir1_column, player2_self, player1_rival);
+                    tours+=1;
+                    break; //arret quand les coordonnees sont bonnes et qu'on a actualise
+                }
+            }
+            if(not rejouer_1){
+                break; //arret si on est a l'eau
             }
         }
-
+    
         //condition d'arret joueur 1
-        if(player2_rival.fin_bat()){ 
-            cout << "JOUEUR 1 : WINNER!" << endl;
-            break;
+        if(player1_rival.fin_bat()){ 
+            cout << nom << " : WINNER!" << endl << "Nombre de tirs : " <<tours << ". C'est pas mal ! Essayez de faire mieux !"<<endl;
+            break; //arret quand le joueur 1 coule tous les bateaux
         }
 		
         // Turn of AI
-        cout << "~~~ TOUR DU JOUEUR 2 ~~~" << endl;
-        cout << player2_rival << endl;
-        pair<int, int> tir2 = ia.level_random(player2_rival);
-        turn(tir2.first, tir2.second, player1_self, player2_rival); 
-        cout << player2_rival << endl;
-		
-        //condition d'arret joueur 2
-        if (player1_rival.fin_bat()){ 
-            cout << "GAME OVER" << endl;
-            break; 
+        cout << endl << "A mon tour!" << endl;
+        cout << endl << "~~~ TOUR DE L'IA ~~~" << endl;
+        bool rejouer_2=false;
+        while(true){ //boucle tour IA
+            pair<int, int> tir2 = ia.level_random(player2_rival);
+            rejouer_2=turn(tir2.first, tir2.second, player1_self, player2_rival);
+            if(not rejouer_2){
+                break; // arret quand l'IA est l'eau
+            }
+        }
+        
+        //condition d'arret IA
+        if (player2_rival.fin_bat()){ 
+            cout << endl <<"------ GAME OVER :( ------" << endl;
+            cout << endl <<"Try again!" << endl;
+            break; //arret quand l'IA coule tous les bateaux
         }
     }
     
