@@ -48,3 +48,27 @@
 - test_coord_prepare(GrilleDepart, 4 int, taillebateau) : teste validités coordonnées pour prepare_game du joueur 1.
 - test_coord_tir(GrilleJeu, int, int) : test validité coordonnées de tir entrées par la joueur 1 (teste si c'est dans la grille et si il l'a pas déjà touchée)
 - turn(x, y, GrilleDepart self, GrilleJeu rival) : actualise la grille jeu rivale
+
+
+
+
+#### Change in BatailleNavale :
+
+if(player2_rival.fin_bat()) {
+    try {
+        throw WinException("YOU WIN!");
+    } catch (WinException win) {
+        cout << "Tu as coulé tous mes bateaux..." << endl;
+        cout << win.what() << endl;
+    }  
+}
+
+
+if (player1_rival.fin_bat()) {
+    try {
+        throw LoseException("YOU LOSE!");
+    } catch (LoseException los) {
+        cout << "J'ai coulé tous tes bateaux..." << endl;
+        cout << los.what() << endl;
+    }
+}
