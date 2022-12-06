@@ -20,6 +20,8 @@ class BatailleNavale{
 
         bool turn(int x, int y, const GrilleDepart&, GrilleJeu&);
 
+        void prepare_game_auto(GrilleDepart& gd,GrilleJeu& gj);
+
         void prepare_game();
 
         BatailleNavale();

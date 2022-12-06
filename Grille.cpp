@@ -47,18 +47,11 @@ std::ostream& operator<<(std::ostream& out, const Grille &g){ //getter et setter
     return out;
 }
 
-//methodes
-pair<char, int> Grille::gametocoord(char col, int ligne){
-        pair<int, int> res;
-        res.first=int(col)%65;
-        res.second=ligne-1;
-        return res;} 
-
 
 
 //Grille Depart
 
-//methodes
+// Methodes
 pair<int,bool> GrilleDepart::quel_bat (int x,int y) const{
     int pos=0; //position du bateau
     for (Bateau boat: bat){
@@ -107,6 +100,25 @@ void GrilleDepart::placer(Bateau bateau){
     bat.push_back(bateau);
 
 }
+
+void GrilleDepart::affiche_depart() const {
+    cout<<"  0 1 2 3 4 5 6 7 8 9"<<endl;
+    for (int i = 0; i<grid.size();i++){
+        cout<<i<<" ";
+        for (int j = 0;j<grid.size();j++){
+            if (grid[i][j]==0){
+                cout<<"~"<<" ";
+            }
+            if (grid[i][j]==1){
+                cout<<"x"<<" ";
+            }
+        }
+        cout<<endl;
+    }
+    cout<<endl <<endl;
+}
+
+
 
 //GrilleJeu
 
@@ -160,7 +172,7 @@ void GrilleJeu::affiche() const {
                 cout<<"?"<<" ";
             }
             if (grid[i][j]==2){
-                cout<<"t"<<" ";
+                cout<<"o"<<" ";
             }
             if (grid[i][j]==3){
                 cout<<"X"<<" ";
