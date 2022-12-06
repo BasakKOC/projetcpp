@@ -115,8 +115,8 @@ void BatailleNavale::turn(int x, int y, const GrilleDepart &playeri_self, Grille
 
 
 void BatailleNavale::jouer(){
-    //prepare_game();
-    IA ia;
+    prepare_game();
+    /* IA ia;
     
     player2_self = ia.preparer_IA();
     cout<<"player2_self ="<<endl<<player2_self<<endl;
@@ -124,40 +124,46 @@ void BatailleNavale::jouer(){
     cout<<"player1_rival ="<<endl<<player1_rival<<endl;
     pair<int, int> p = ia.level_random(player1_rival);
     turn(p.first, p.second,player2_self,player1_rival);
-    cout<<"player1_rival ="<<endl<<player1_rival<<endl;
-    //il faut tout changer! bisous
-    /* while(true){
-         // Turn of player 1
-        cout << "TURN OF PLAYER 1" << endl;
-        //cout << player1_rival << endl;
-        int movement1_row, movement1_column;
-        cout << "Player 1! Please, type the row." << endl;
-        cin >> movement1_row; 
-        cout << "Player 1! Please, type the column." << endl;
-        cin >> movement1_column;
-        assert((movement1_row > -1 && movement1_row < 10) && (movement1_column > -1 && movement1_column < 10));
-        turn_1(movement1_row, movement1_column); 
-        cout << player1_rival << endl;
-		
+    cout<<"player1_rival ="<<endl<<player1_rival<<endl; */
+
+    while(true){
+
+         // Tour du 1er joueur
+        cout << "~~~ TOUR DU JOUEUR 1 ~~~" << endl;
+        int tir1_row, tir1_column;
+        while(true){
+            cout << "Joueur 1 ! Entrez la ligne." << endl;
+            cin >> tir1_row; 
+            cout << "Joueur 1 ! Entrez la colonne." << endl;
+            cin >> tir1_column;
+            if test_coord_tir (player1_rival, tir1_row, tir1_column){
+                turn(tir1_row, tir1_column, player2_self, player1_rival); 
+                cout << player1_rival << endl;
+                break;
+            }
+        }
+
+        //condition d'arret joueur 1
         if(player2_rival.fin_bat()){ 
             cout << "YOU WIN!" << endl;
             break;
         }
-				
+		
         // Turn of AI
-        cout << "TURN OF PLAYER 2" << endl;
+        cout << "~~~ TOUR DU JOUEUR 2 ~~~" << endl;
         cout << player2_rival << endl;
-        srand (time(NULL));
-        int movement2_row = rand() % 9;
-        int movement2_column = rand() % 9;
-        turn_2(movement2_row, movement2_column); 
+        
+        pair<int, int> tir2 = level_random(player2_rival);
+        turn(tir2.first, tir2.second, player1_self, player2_rival); 
+        
         cout << player2_rival << endl;
 		
+        //condition d'arret joueur 2
         if (player1_rival.fin_bat()){ 
             cout << "YOU LOSE!" << endl;
             break; 
         }
-    } */
+    }
     
 }
 
