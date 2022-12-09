@@ -11,17 +11,17 @@ int main(){
 
     //test ia.preparer
     GrilleDepart g(ia.preparer_IA());
-    cout<<g<<endl;
-    cout<<"bateau de g = "<<endl;
-    for(const Bateau& boat: g.get_bat()){
-        cout<<boat;
-    }
+    g.affiche_depart();
+//    cout<<"bateau de g = "<<endl;
+//    for(const Bateau& boat: g.get_bat()){
+//        cout<<boat;
+//    }
 
 
 //    //test levle_random
     GrilleJeu gj;
     gj.recupere_bat(g);
-    cout<<"grille jeu = "<<endl<<gj<<endl;
+    //cout<<"grille jeu = "<<endl<<gj<<endl;
 //    cout<<"bateau de gj = "<<endl;
 //    for(const Bateau& boat: gj.get_bat()){
 //        cout<<boat;
@@ -42,23 +42,53 @@ int main(){
 
 
     //test ou sont les un
-    int x,y;
-    cin>>x;
-    cin>>y;
-    gj.actualiser(x,y,g);
+//    int x,y;
+//    cin>>x;
+//    cin>>y;
+//    gj.actualiser(x,y,g);
+//
+//    cin>>x;
+//    cin>>y;
+//    gj.actualiser(x,y,g);
+//
+//    cin>>x;
+//    cin>>y;
+//    gj.actualiser(x,y,g);
+//
+//    vector<pair<int,int>> v=ia.ou_sont_les_uns(gj);
+//    for (pair<int,int> p :v){
+//        cout<<"p.first = "<<p.first<<" ; p.second = "<<p.second<<endl;
+//    }
 
-    cin>>x;
-    cin>>y;
-    gj.actualiser(x,y,g);
+//test level_normal:
 
-    cin>>x;
-    cin>>y;
-    gj.actualiser(x,y,g);
 
-    vector<pair<int,int>> v=ia.ou_sont_les_uns(gj);
-    for (pair<int,int> p :v){
-        cout<<"p.first = "<<p.first<<" ; p.second = "<<p.second<<endl;
-    }
+
+        int x,y;
+        cin>>x;
+        cin>>y;
+        gj.actualiser(x,y,g);
+        gj.affiche();
+
+         cin>>x;
+         cin>>y;
+         gj.actualiser(x,y,g);
+         gj.affiche();
+
+        for (int i = 0; i<2 ; i++){
+            cout<<"level normal donne :"<<endl;
+            pair<int, int> p(ia.level_normal(gj));
+
+            gj.actualiser(p.first, p.second, g);
+            cout << "gj apres actualisation = " << endl;
+            gj.affiche();
+            cout << "bateau de gj = " << endl;
+            for (const Bateau &boat: gj.get_bat()) {
+                cout << boat;
+            }
+        }
+
+
 
 
 }

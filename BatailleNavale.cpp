@@ -205,7 +205,7 @@ void BatailleNavale::jouer(){
         cout << endl << "~~~ TOUR DE L'IA ~~~" << endl;
         bool rejouer_2=false;
         while(not player2_rival.fin_bat()){ //boucle tour IA
-            pair<int, int> tir2 = ia.level_random(player2_rival);
+            pair<int, int> tir2 = ia.level_normal(player2_rival);
             rejouer_2=turn(tir2.first, tir2.second, player1_self, player2_rival);
             if(not rejouer_2){
                 int i;

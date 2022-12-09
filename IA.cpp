@@ -69,9 +69,9 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
     return p;
 }
 
-/* pair<int, int> IA::level_normal(const GrilleJeu & g) {
-    int x,y;
+pair<int, int> IA::level_normal(const GrilleJeu & g) {
     vector<pair<int,int>> vec(ou_sont_les_uns(g));
+
     if (vec.empty()){
         return level_random(g);
     }
@@ -82,6 +82,7 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
             if ((i + 1) >= 0 && (i + 1) < 10) {
                 if(g(i+1,j)==4){
                     pair<int,int> p(i+1,j);
+                    cout<<"x = "<<p.first<<" ;y = "<<p.second<<endl;
                     return p;
                 }
 
@@ -89,6 +90,7 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
             if ((i - 1) >= 0 && (i - 1) < 10) {
                 if(g(i-1,j)==4){
                     pair<int,int> p(i-1,j);
+                    cout<<"x = "<<p.first<<" ;y = "<<p.second<<endl;
                     return p;
                 }
 
@@ -96,6 +98,7 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
             if ((j + 1) >= 0 && (j + 1) < 10) {
                 if(g(i,j+1)==4){
                     pair<int,int> p(i,j+1);
+                    cout<<"x = "<<p.first<<" ;y = "<<p.second<<endl;
                     return p;
                 }
 
@@ -103,6 +106,7 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
             if ((j - 1) >= 0 && (j - 1) < 10) {
                 if(g(i,j-1)==4){
                     pair<int,int> p(i,j-1);
+                    cout<<"x = "<<p.first<<" ;y = "<<p.second<<endl;
                     return p;
                 }
 
@@ -110,41 +114,62 @@ pair<int, int> IA::level_random(const GrilleJeu& g) {
         }
     }
     else{
-        if (vec[0].first==vec[1].second){  //cas ou le bateau est en ligne
+
+        if (vec[0].first==vec[1].first){  //cas ou le bateau est en ligne
+
             int i = vec[0].first;
+
             int j = vec[0].second+vec.size();
+
             if (j >= 0 && j < 10) {
-                if(g(i,j-1)==4){
+
+                if(g(i,j)==4){
+
                     pair<int,int> p(i,j);
+                    cout<<"x = "<<p.first<<" ;y = "<<p.second<<endl;
                     return p;
                 }
+                else {
+
+                    pair<int,int> p(i,vec[0].second-1);
+                    cout<<"x = "<<p.first<<" ;y = "<<p.second<<endl;
+                    return p;}
             }
             else {
+
                 pair<int,int> p(i,vec[0].second-1);
+                cout<<"x = "<<p.first<<" ;y = "<<p.second<<endl;
                 return p;
             }
         }
         else{  //cas ou le bateau est en colonne
-//            pair<int,int> p(???,vec[0].second);
-//            return p;
+            cout<<"cas colonne "<<endl;
             int i = vec[0].first+vec.size();
             int j = vec[0].second;
             if (i >= 0 && i< 10) {
-                if(g(i,j-1)==4){
+                if(g(i,j)==4){
                     pair<int,int> p(i,j);
+                    cout<<"x = "<<p.first<<" ;y = "<<p.second<<endl;
+                    return p;
+                }
+                else{
+                    pair<int,int> p(vec[0].first-1,j);
+                    cout<<"x = "<<p.first<<" ;y = "<<p.second<<endl;
                     return p;
                 }
             }
             else {
                 pair<int,int> p(vec[0].first-1,j);
+                cout<<"x = "<<p.first<<" ;y = "<<p.second<<endl;
                 return p;
             }
         }
     }
-    cout<<"x = "<<x<<" ;y = "<<y<<endl;
-    pair<int,int> p(x,y);
+
+    pair<int,int> p(-1,-1);
+    cout<<"x = "<<-1<<" ;y = "<<-1<<endl;
     return p;
-} */
+}
 
 vector<pair<int, int>> IA::ou_sont_les_uns(const GrilleJeu & g) { //il y a toujours au moins un bateau pas coule
     vector<Bateau> bat(g.get_bat());
