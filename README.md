@@ -38,6 +38,7 @@
 - coord_bateau(int size) : choisist aléatoirement les coord d'un bateau de taille size
 - preparer_IA() : grille depar de l'IA
 - level_random(GrilleJeu) : choisit des coord aléatoirement que l'IA peut jouer aleatoirement
+- level_normal(GrilleJeu) : choisit des coord que l'IA peut jouer
 
 #### BatailleNavale :
 - prepare_game() : initlaise les grilles du joueur 1 et de l'IA
