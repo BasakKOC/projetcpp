@@ -20,6 +20,7 @@ public:
     //renvoie les coord jouer par IA
     pair<int,int> level_random(const GrilleJeu&);
     pair<int,int> level_normal(const GrilleJeu&);
+    pair<int,int> level_GOD(const GrilleJeu&);
 };
 
 #endif //BATAILLENAVALE_CPP_IA_HPP
