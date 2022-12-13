@@ -1,4 +1,4 @@
-PROGS: test_bateau testgrille test_bataille test_IA Jeu
+PROGS: test_bateau testgrille tests test_IA Jeu
 
 all: $(PROGS)
 
@@ -8,7 +8,7 @@ test_bateau: test_bateau.o Bateau.o
 testgrille: testgrille.o Bateau.o Grille.o
 	g++ -o $@ $^ 
 
-test_bataille: test_bataille.o Bateau.o Grille.o BatailleNavale.o IA.o
+tests: tests.o Bateau.o Grille.o BatailleNavale.o IA.o
 	g++ -o $@ $^ 
 
 test_IA: test_IA.o Bateau.o Grille.o IA.o
@@ -17,7 +17,7 @@ test_IA: test_IA.o Bateau.o Grille.o IA.o
 Jeu: Jeu.o BatailleNavale.o Bateau.o Grille.o IA.o
 	g++ -o $@ $^
 
-test_bataille.o: test_bataille.cpp Bateau.hpp Grille.hpp BatailleNavale.hpp IA.hpp
+tests.o: tests.cpp Bateau.hpp Grille.hpp BatailleNavale.hpp IA.hpp
 	g++ -c $<
 
 IA.o: IA.cpp Bateau.hpp Grille.hpp IA.hpp

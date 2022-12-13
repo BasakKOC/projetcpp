@@ -21,7 +21,6 @@ protected:
 public:
     //constructeurs
     Grille(int);
-    //Grille(const Grille &g); //par copie
 
     //getter bat
     vector<Bateau> get_bat() const {return bat;}
@@ -36,16 +35,6 @@ public:
         return grid[i][j];}
 
     friend std::ostream& operator<<(std::ostream& out, const Grille &g); //affichage
-
-    // 0 : case eau, 1: case bateau intact, 2: case bateau touché
-    // 3: coulé, 4 : inconnu (pour le joueur)
-
-    /* int& operator()(char colonne, int ligne) { //version (lettre, int entre 1 et 10)
-        int i=int(colonne)%65; //on convertit la lettre en coord entre 0 et 10
-        int j=ligne-1;
-        assert(i>=0 && i<10 && j>=0 && j<10);
-        return grid[i][j];} */
-
 };
 
 class GrilleDepart : public Grille{
@@ -67,7 +56,7 @@ class GrilleJeu : public Grille{
 
     //methodes
     bool actualiser(int, int, const GrilleDepart&); //actualise une grille
-    bool fin_bat();
+    bool fin_bat() const;
     void affiche() const;
 }; 
 

@@ -151,7 +151,7 @@ void BatailleNavale::jouer(){
     cout<<endl<<endl<<"Bonjour, "<< nom <<" !"<<endl<<endl<< "Je suis l'IA, heureuse de jouer avec vous !"<<endl<<endl<< "Allez, la partie commence !"<<endl<<endl;
 
     int debut; // variable qui demande au joueur si il veut placer les bateau tout seul ou pas
-    cout<<"Voulez-vous placer vous meme vos bateaux ? tTapez 0 pour oui, 1 pour generer une grille aleatoire."<<endl;
+    cout<<"Voulez-vous placer vous meme vos bateaux ? Tapez 0 pour oui, 1 pour generer une grille aleatoire."<<endl;
     cin>>debut;
     if (debut==1){
         cout<<"Veuillez patienter ..."<<endl<<endl;

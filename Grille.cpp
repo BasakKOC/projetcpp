@@ -24,17 +24,6 @@ Grille::Grille(int n) : grid(),bat() {
                 grid.push_back(ligne);}
 } //par defaut
 
-//Grille::Grille(const Grille &g):grid(),bat(){ //par copie
-//        //copie de la grille
-//        for (int i=0; i<10; i++){
-//            for(int j=0; j<10; j++){
-//                grid[i][j]=g.grid[i][j];}}
-//        //copie de bat
-//        for (int i=0; i< (g.bat).size();i++){
-//            bat.push_back(g.bat[i]);
-//        }
-//}
-
 //operateurs
 std::ostream& operator<<(std::ostream& out, const Grille &g){ //getter et setter
     for (int i=0; i<10; i++){
@@ -154,7 +143,7 @@ bool GrilleJeu::actualiser(int x, int y, const GrilleDepart& gr) { //par du prin
     return j;
 }
 
-bool GrilleJeu::fin_bat() {
+bool GrilleJeu::fin_bat() const {
     bool fin=true;
     for (int i=0; i<bat.size(); i++) {
         if (not bat[i].couler()) {fin = false;}
