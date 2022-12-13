@@ -136,7 +136,7 @@ void BatailleNavale::jouer(){
     cout<<"|_.__/ \\__,_|\\__|\\__|_|\\___||___/_| |_|_| .__/ "<<endl;
     cout<<"                                        | |    "<<endl;
     cout<<"                                        |_|    "<<endl;
-    cout<< "o o..          "<<endl;
+    cout<<"o o..          "<<endl;
     cout<<"    o o.o        "<<endl;
     cout<<"     ...oo       "<<endl;
     cout<<"      __||__     "<<endl;
@@ -151,7 +151,7 @@ void BatailleNavale::jouer(){
     cout<<endl<<endl<<"Bonjour, "<< nom <<" !"<<endl<<endl<< "Je suis l'IA, heureuse de jouer avec vous !"<<endl<<endl<< "Allez, la partie commence !"<<endl<<endl;
 
     int debut; // variable qui demande au joueur si il veut placer les bateau tout seul ou pas
-    cout<<"voulez vous placer vous meme les bateaux ? tapez 0 pour oui, 1 pour generer une grille automatique"<<endl;
+    cout<<"Voulez-vous placer vous meme vos bateaux ? tTapez 0 pour oui, 1 pour generer une grille aleatoire."<<endl;
     cin>>debut;
     if (debut==1){
         cout<<"Veuillez patienter ..."<<endl<<endl;
@@ -186,9 +186,11 @@ void BatailleNavale::jouer(){
                 }
             }
             if(not rejouer_1){
-                int c;
+                //int c;
                 cout<<"Entrez un chiffre pour continuer"<<endl;
-                cin>>c;
+                //cin>>c;
+                cin.get();
+                cin.get();
                 system("clear");
                 break; //arret si on est a l'eau
             }
@@ -196,7 +198,16 @@ void BatailleNavale::jouer(){
     
         //condition d'arret joueur 1
         if(player1_rival.fin_bat()){ 
-            cout << nom << " : WINNER!" << endl << "Nombre de tirs : " <<tours << ". C'est pas mal ! Essayez de faire mieux !"<<endl;
+            cout << nom << " !!!" << endl << endl <<endl;
+            cout<<"$$\\     $$\\  $$$$$$\\  $$\\   $$\\       $$\\      $$\\ $$$$$$\\ $$\\   $$\\ "<<endl;
+            cout<<"\\$$\\   $$  |$$  __$$\\ $$ |  $$ |      $$ | $\\  $$ |\\_$$  _|$$$\\  $$ |"<<endl;
+            cout<<" \\$$\\ $$  / $$ /  $$ |$$ |  $$ |      $$ |$$$\\ $$ |  $$ |  $$$$\\ $$ |"<<endl;
+            cout<<"  \\$$$$  /  $$ |  $$ |$$ |  $$ |      $$ $$ $$\\$$ |  $$ |  $$ $$\\$$ |"<<endl;
+            cout<<"   \\$$  /   $$ |  $$ |$$ |  $$ |      $$$$  _$$$$ |  $$ |  $$ \\$$$$ |"<<endl;
+            cout<<"    $$ |    $$ |  $$ |$$ |  $$ |      $$$  / \\$$$ |  $$ |  $$ |\\$$$ |"<<endl;
+            cout<<"    $$ |     $$$$$$  |\\$$$$$$  |      $$  /   \\$$ |$$$$$$\\ $$ | \\$$ |"<<endl;
+            cout<<"    \\__|     \\______/  \\______/       \\__/     \\__|\\______|\\__|  \\__|"<<endl;
+            cout<< endl<<endl<<endl<<endl<<"Nombre de tirs : " <<tours << ". C'est pas mal ! Essayez de faire mieux !"<<endl<<endl;
             break; //arret quand le joueur 1 coule tous les bateaux
         }
 		
@@ -208,9 +219,10 @@ void BatailleNavale::jouer(){
             pair<int, int> tir2 = ia.level_normal(player2_rival);
             rejouer_2=turn(tir2.first, tir2.second, player1_self, player2_rival);
             if(not rejouer_2){
-                int i;
+                //int i;
                 cout<<"Veuillez tapper un chiffre pour continuer"<<endl;
-                cin>>i;
+                //cin>>i;
+                cin.get();
                 system("clear");
                 break; // arret quand l'IA est l'eau
             }
@@ -218,8 +230,18 @@ void BatailleNavale::jouer(){
         
         //condition d'arret IA
         if (player2_rival.fin_bat()){ 
-            cout << endl <<"------ GAME OVER :( ------" << endl;
-            cout << endl <<"Try again!" << endl;
+            cout<<"  ___    __    __  __  ____    _____  _  _  ____  ____"<<endl;
+            cout<<" / __)  /__\\  (  \\/  )( ___)  (  _  )( \\/ )( ___)(  _ \\"<<endl;
+            cout<<"( (_-. /(__)\\  )    (  )__)    )(_)(  \\  /  )__)  )   /"<<endl;
+            cout<<" \\___/(__)(__)(_/\\/\\_)(____)  (_____)  \\/  (____)(_)\\_)"<<endl;
+            cout<<"                          _____"<<endl;
+            cout<<"                         /     \\"<<endl;
+            cout<<"                        | () () |"<<endl;
+            cout<<"                         \\  ^  /"<<endl;
+            cout<<"                          |||||"<<endl;
+            cout<<"                          |||||"<<endl;
+            cout << endl<<endl<<"Try again!" << endl;
+            cout << endl <<endl<<"Try again!" << endl;
             break; //arret quand l'IA coule tous les bateaux
         }
     }
