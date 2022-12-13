@@ -243,3 +243,26 @@ void BatailleNavale::jouer(){
     
 }
 
+void test_BatailleNavale(BatailleNavale bataille){
+
+    //Test prepare_game_auto
+    cout<<endl<<"Veuillez patienter ..."<<endl<<endl;
+    bataille.prepare_game_auto(bataille.player2_self, bataille.player1_rival);
+    cout<<"Votre grille aleatoire est :"<<endl<<bataille.player2_self<<endl;
+
+    // Test turn
+    int i,j;
+
+    for(int j=0; j<=20;j++){
+        cout<<"ligne ?"<<endl;
+        cin>>i;
+        cout<<"colonne ?"<<endl;
+        cin>>j;
+        bataille.turn(i, j, bataille.player2_self, bataille.player1_rival);
+    }
+
+    // Test prepare_game
+    bataille.prepare_game();
+
+}
+
