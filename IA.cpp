@@ -212,3 +212,21 @@ vector<pair<int, int>> IA::ou_sont_les_uns(const GrilleJeu & g) { //il y a toujo
     }
     return vec_isole;
 }
+
+
+
+
+pair<int,int> IA::level_GOD(const GrilleJeu& g){
+    vector<Bateau> bat=g.get_bat();
+    for (Bateau boat : bat){
+        vector<vector<int>> coord=boat.get_allcoord();
+        for (int i = 0 ; i<boat.size();i++){
+            if (boat.state(i)==0){
+                pair<int,int> p(coord[i][0],coord[i][1]);
+                return p;
+            }
+        }
+    }
+    pair<int,int> p(0,0);
+    return p;
+}
