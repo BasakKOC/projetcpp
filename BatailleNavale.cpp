@@ -186,9 +186,7 @@ void BatailleNavale::jouer(){
                 }
             }
             if(not rejouer_1){
-                //int c;
-                cout<<"Entrez un chiffre pour continuer"<<endl;
-                //cin>>c;
+                cout<<"Appuyez sur Entree pour continuer."<<endl;
                 cin.get();
                 cin.get();
                 system("clear");
@@ -219,9 +217,7 @@ void BatailleNavale::jouer(){
             pair<int, int> tir2 = ia.level_normal(player2_rival);
             rejouer_2=turn(tir2.first, tir2.second, player1_self, player2_rival);
             if(not rejouer_2){
-                //int i;
-                cout<<"Veuillez tapper un chiffre pour continuer"<<endl;
-                //cin>>i;
+                cout<<"Appuyez sur Entree pour continuer."<<endl;
                 cin.get();
                 system("clear");
                 break; // arret quand l'IA est l'eau
@@ -240,8 +236,7 @@ void BatailleNavale::jouer(){
             cout<<"                         \\  ^  /"<<endl;
             cout<<"                          |||||"<<endl;
             cout<<"                          |||||"<<endl;
-            cout << endl<<endl<<"Try again!" << endl;
-            cout << endl <<endl<<"Try again!" << endl;
+            cout << endl<<endl<<"Try again!" << endl<<endl;
             break; //arret quand l'IA coule tous les bateaux
         }
     }
