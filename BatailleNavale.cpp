@@ -12,6 +12,28 @@ using std::string;
 using std::cin;
 using std::cout;
 using std::endl;
+using std::exception;
+
+
+class LoseException : public exception {
+    private:
+        char * message;
+    public:
+        LoseException(char * msg) : message(msg) {}
+        char * what () {
+            return message;
+        }
+};
+
+class WinException : public exception {
+    private:
+        char * message;
+    public:
+        WinException(char * msg) : message(msg) {}
+        char * what () {
+            return message;
+        }
+};
 
 
 //constructeur
@@ -205,8 +227,14 @@ void BatailleNavale::jouer(){
             cout<<"    $$ |    $$ |  $$ |$$ |  $$ |      $$$  / \\$$$ |  $$ |  $$ |\\$$$ |"<<endl;
             cout<<"    $$ |     $$$$$$  |\\$$$$$$  |      $$  /   \\$$ |$$$$$$\\ $$ | \\$$ |"<<endl;
             cout<<"    \\__|     \\______/  \\______/       \\__/     \\__|\\______|\\__|  \\__|"<<endl;
-            cout<< endl<<endl<<endl<<endl<<"Nombre de tirs : " <<tours << ". C'est pas mal ! Essayez de faire mieux !"<<endl<<endl;
-            break; //arret quand le joueur 1 coule tous les bateaux
+            
+            try {
+                throw WinException("C'est pas mal ! Essayez de faire mieux !");
+            }
+            catch(WinException win){
+                cout << endl<<endl<< "Nombre de tirs : " <<tours << ". " << win.what() << endl<<endl;
+                break; //arret quand le joueur 1 coule tous les bateaux
+            }             
         }
 		
         // Turn of AI
@@ -236,8 +264,13 @@ void BatailleNavale::jouer(){
             cout<<"                         \\  ^  /"<<endl;
             cout<<"                          |||||"<<endl;
             cout<<"                          |||||"<<endl;
-            cout << endl<<endl<<"Try again!" << endl<<endl;
-            break; //arret quand l'IA coule tous les bateaux
+            try {
+                throw LoseException("Try again ! ");
+            }
+            catch(LoseException los){
+                cout << endl<<endl<< "J'ai coulé tous tes bateaux... " << los.what() << endl<<endl;
+                break; //arret quand l'IA coule tous les bateaux
+            }
         }
     }
     
