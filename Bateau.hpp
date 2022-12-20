@@ -20,8 +20,8 @@ class Bateau{
 
     //accesseurs et mutateurs
     int size() const {return taille;}
-    int state(int i) const {assert (i<taille); return vec[i];}  // ou le faire avec loperateur [] si vous preferer
-    int& state(int i) {assert(i<taille);return vec[i];}
+    int state(int i) const {assert (i<taille && i>-1); return vec[i];}
+    int& state(int i) {assert(i<taille && i>-1);return vec[i];}
 
     int get_x_start() const {return startx;}
     int get_y_start() const {return starty;}
