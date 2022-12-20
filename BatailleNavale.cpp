@@ -229,7 +229,8 @@ void BatailleNavale::jouer(){
             cout<<"    \\__|     \\______/  \\______/       \\__/     \\__|\\______|\\__|  \\__|"<<endl;
             
             try {
-                throw WinException("C'est pas mal ! Essayez de faire mieux !");
+                string str = "C'est pas mal ! Essayez de faire mieux !";
+                throw WinException(&str[0]);
             }
             catch(WinException win){
                 cout << endl<<endl<< "Nombre de tirs : " <<tours << ". " << win.what() << endl<<endl;
@@ -265,7 +266,8 @@ void BatailleNavale::jouer(){
             cout<<"                          |||||"<<endl;
             cout<<"                          |||||"<<endl;
             try {
-                throw LoseException("Try again ! ");
+                string str = "Try again ! ";
+                throw LoseException(&str[0]);
             }
             catch(LoseException los){
                 cout << endl<<endl<< "J'ai coulé tous tes bateaux... " << los.what() << endl<<endl;
