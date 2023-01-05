@@ -1,13 +1,12 @@
 # Projet CPP : Bataille Navale
 
+compiler puis lancer tests.exe pour les tests unitaire; lancer Jeu.exe pour jouer le jeu.
+
+
 ### Affichage grille :
 0 : case eau, 1 : case bateau intact, 2 : case bateau touché <br />
 3 : coulé, 4 : inconnu (pour le joueur)
 
-## To do list :
-
-#### Semaine 27 novembre 2022 :
-- Faire l'exception
 
 ## Liste des fonctions :
 #### Grille :
