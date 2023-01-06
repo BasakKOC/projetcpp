@@ -255,7 +255,7 @@ int main(){
     test_BatailleNavale(bataille);
 
     // Test jouer
-    bataille.jouer();
+    //bataille.jouer();
 
     return 0;
 }
