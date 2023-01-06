@@ -202,12 +202,12 @@ int main(){
         cout<<boat;
     }// doit renvoyer tous les bateau donc 0 0 0 0 0 et 0 0 0 0 et 0 0 0 etc
 
-    GrilleJeu gj;
-    gj.recupere_bat(g1);
+    GrilleJeu gj2;
+    gj2.recupere_bat(g1);
 
     ia.test_coord_bateau();//taille = 3, verifier que les coordonnes font sens
     cout<<endl;
-    ia.test_level_random(gj,g1); //verifier que les coordonnes rendus sont jouables
+    ia.test_level_random(gj2,g1); //verifier que les coordonnes rendus sont jouables
     //fait 5 tours
 
     ia.test_ou_sont_les_uns();
@@ -222,33 +222,34 @@ int main(){
     g1.affiche_depart();
     cout<<endl;
     cout<<"la grille jeu vaut "<<endl;
-    gj.affiche();
+    gj2.affiche();
     cout<<endl;
     int x,y;
     cout<<"toucher un bateau (ligne entree puis colonne entree)"<<endl;
     cin>>x;
     cin>>y;
-    gj.actualiser(x,y,g1);
-    gj.affiche();
+    gj2.actualiser(x,y,g1);
+    gj2.affiche();
     cout<<"encore une fois(tester differents cas)"<<endl;
     cin>>x;
     cin>>y;
-    gj.actualiser(x,y,g1);
-    gj.affiche();
+    gj2.actualiser(x,y,g1);
+    gj2.affiche();
     for (int i = 0; i<2 ; i++){
         cout<<"level normal donne :"<<endl;
-        pair<int, int> p(ia.level_normal(gj));
+        pair<int, int> p(ia.level_normal(gj2));
 
-        gj.actualiser(p.first, p.second, g1);
+        gj2.actualiser(p.first, p.second, g1);
         cout << "gj apres actualisation = " << endl;
-        gj.affiche();
+        gj2.affiche();
         cout << "bateau de gj = " << endl;
-        for (const Bateau &boat: gj.get_bat()) {
+        for (const Bateau &boat: gj2.get_bat()) {
             cout << boat;
         }
     }
 
     // ---- TESTS BATAILLENAVALE -----
+    cout<<"---- TESTS BATAILLENAVALE -----"<<endl;
     BatailleNavale bataille;
 
     //Tests methodes privees

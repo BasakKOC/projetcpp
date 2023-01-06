@@ -287,8 +287,8 @@ void test_BatailleNavale(BatailleNavale bataille){
 
     // Test turn
     int i,j;
-
-    for(int j=0; j<=20;j++){
+    cout<<"vous allez jouer 10 tours"<<endl;
+    for(int j=0; j<=10;j++){
         cout<<"ligne ?"<<endl;
         cin>>i;
         cout<<"colonne ?"<<endl;
